@@ -1,0 +1,3 @@
+import type {ReactNode} from 'react';
+type Props={status?:string|null;children?:ReactNode};
+export default function StatusBadge({status,children}:Props){const value=String(status??children??'—');const key=value.toUpperCase().replace(/\s+/g,'_');const tone=['ACTIVE','PRESENT','APPROVED','COMPLETED','WFH','WFO','IN_PROGRESS'].includes(key)?'good':['PENDING','LATE','ON_HOLD','TODO','BACKLOG','ON_LEAVE','INCOMPLETE'].includes(key)?'warn':['REJECTED','CANCELLED','TERMINATED','RESIGNED','ABSENT'].includes(key)?'bad':'neutral';return <span className={`badge ${tone}`}>{value.replaceAll('_',' ')}</span>}

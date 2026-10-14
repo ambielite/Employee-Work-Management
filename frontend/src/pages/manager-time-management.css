@@ -1,0 +1,160 @@
+.managerTimePage {
+  width: 100%;
+  min-width: 0;
+  max-width: 1320px;
+  margin: 0 auto;
+  color: #111827;
+  container-name: manager-time;
+  container-type: inline-size;
+}
+
+.managerTimeHeader {
+  box-sizing: border-box;
+  height: auto;
+  min-height: 118px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding: 18px 20px;
+  border: 1px solid #e7eaf2;
+  border-radius: 14px;
+  background: linear-gradient(115deg, #fff 0%, #fbfcff 100%);
+  box-shadow: 0 3px 12px rgba(24,39,75,.035);
+}
+
+.managerTimeHeader h1 { margin: 5px 0 6px; color: #111827; font-size: clamp(24px, 2vw, 29px); line-height: 1.18; letter-spacing: -.025em; }
+.managerTimeHeader p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.5; }
+.managerTimeEyebrow { display: inline-flex; align-items: center; gap: 7px; color: #4f46e5; font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.managerTimeRefresh { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 15px; border: 1px solid #d7deeb; border-radius: 10px; background: #fff; color: #334155; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 5px rgba(24,39,75,.04); }
+.managerTimeRefresh:disabled { opacity: .6; cursor: wait; }
+.managerTimeSpin { animation: managerTimeSpin .9s linear infinite; }
+@keyframes managerTimeSpin { to { transform: rotate(360deg); } }
+
+.managerTimeError { margin: 0 0 16px; padding: 12px 14px; border: 1px solid #fecaca; border-radius: 10px; background: #fef2f2; color: #b91c1c; font-size: 13px; }
+.managerTimeLoading { min-height: 220px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; color: #64748b; }
+
+.managerTimeMetrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.managerTimeMetrics article { position: relative; min-width: 0; min-height: 108px; display: flex; align-items: center; gap: 15px; overflow: hidden; padding: 18px; border: 1px solid #e1e7f0; border-top: 4px solid #3b82f6; border-radius: 15px; background: linear-gradient(135deg, #fff 10%, #f4f8ff 100%); box-shadow: 0 5px 17px rgba(24,39,75,.06); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.managerTimeMetrics article::before { position: absolute; top: -38px; right: -28px; width: 112px; height: 112px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.10) 0%, rgba(59,130,246,0) 72%); content: ""; pointer-events: none; }
+.managerTimeMetrics article:nth-child(2) { border-top-color: #10b981; background: linear-gradient(135deg, #fff 10%, #f1fbf7 100%); }
+.managerTimeMetrics article:nth-child(2)::before { background: radial-gradient(circle, rgba(16,185,129,.11) 0%, rgba(16,185,129,0) 72%); }
+.managerTimeMetrics article:nth-child(3) { border-top-color: #f59e0b; background: linear-gradient(135deg, #fff 10%, #fff8ed 100%); }
+.managerTimeMetrics article:nth-child(3)::before { background: radial-gradient(circle, rgba(245,158,11,.12) 0%, rgba(245,158,11,0) 72%); }
+.managerTimeMetrics article:nth-child(4) { border-top-color: #94a3b8; background: linear-gradient(135deg, #fff 10%, #f5f7fa 100%); }
+.managerTimeMetrics article:nth-child(4)::before { background: radial-gradient(circle, rgba(100,116,139,.10) 0%, rgba(100,116,139,0) 72%); }
+.managerTimeMetrics article:hover { transform: translateY(-3px); border-right-color: #cbd5e1; border-bottom-color: #cbd5e1; border-left-color: #cbd5e1; box-shadow: 0 11px 25px rgba(24,39,75,.11); }
+.managerTimeMetricIcon { position: relative; z-index: 1; width: 46px; height: 46px; flex: 0 0 46px; display: grid; place-items: center; border: 1px solid rgba(148,163,184,.14); border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 2px 5px rgba(24,39,75,.035); }
+.managerTimeMetricIcon.blue { background: #eff6ff; color: #2563eb; }
+.managerTimeMetricIcon.green { background: #ecfdf5; color: #059669; }
+.managerTimeMetricIcon.amber { background: #fff7ed; color: #ea580c; }
+.managerTimeMetricIcon.slate { background: #f1f5f9; color: #64748b; }
+.managerTimeMetrics article div { position: relative; z-index: 1; min-width: 0; }
+.managerTimeMetrics small, .managerTimeMetrics article div>span { display: block; color: #64748b; font-size: 12px; line-height: 1.4; }
+.managerTimeMetrics strong { display: block; margin: 3px 0; color: #111827; font-size: 24px; line-height: 1.15; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+
+.managerTimePanel { min-width: 0; margin-bottom: 18px; padding: 21px; border: 1px solid #e1e7f0; border-radius: 15px; background: #fff; box-shadow: 0 4px 15px rgba(24,39,75,.04); }
+.managerTimePanelHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 14px; color: #64748b; }
+.managerTimePanelHeader h2 { margin: 0 0 5px; color: #111827; font-size: 18px; letter-spacing: -.01em; }
+.managerTimePanelHeader p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.45; }
+.managerTimeChart { width: 100%; height: 330px; }
+.managerTimeEmpty { display: grid; min-height: 120px; place-items: center; border: 1px dashed #cbd5e1; border-radius: 10px; color: #64748b; font-size: 13px; }
+.managerTimeFilters { display: flex; align-items: center; gap: 9px; }
+.managerTimeSearch { display: flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 10px; border: 1px solid #dbe2ec; border-radius: 8px; color: #94a3b8; }
+.managerTimeSearch input { width: 170px; border: 0; outline: 0; color: #334155; font: inherit; font-size: 12px; }
+.managerTimeFilters select { min-height: 38px; padding: 0 10px; border: 1px solid #dbe2ec; border-radius: 8px; background: #fff; color: #334155; font: inherit; font-size: 12px; }
+.managerTimeTableWrap { width: 100%; overflow: auto; border: 1px solid #e2e8f0; border-radius: 10px; }
+.managerTimeTable { width: 100%; min-width: 900px; border-collapse: collapse; text-align: left; font-size: 13px; }
+.managerTimeTable th { position: sticky; top: 0; padding: 13px 13px; background: #f7f9fc; color: #475569; font-size: 11px; font-weight: 750; white-space: nowrap; }
+.managerTimeTable td { padding: 13px; border-top: 1px solid #edf0f4; color: #334155; vertical-align: middle; white-space: nowrap; }
+.managerTimeTable tr:hover td { background: #fafcff; }
+.managerTimeStatus { display: inline-flex; padding: 4px 8px; border-radius: 99px; font-size: 10px; font-weight: 750; }
+.managerTimeStatus.present { background: #ecfdf5; color: #047857; }
+.managerTimeStatus.other { background: #f1f5f9; color: #64748b; }
+.managerTimeStatus.breakActive { background: #fff7ed; color: #c2410c; }
+
+.managerTimePage .managerBreakControl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, .95fr); align-items: center; gap: 14px 28px; width: auto; margin-bottom: 18px; padding: 22px; border: 1px solid #dbeafe; border-radius: 16px; background: linear-gradient(120deg, #fff 0%, #f8fbff 100%); box-shadow: 0 5px 18px rgba(37,99,235,.055); }
+.managerBreakControl .managerTimePanelHeader { align-items: center; margin: 0; }
+.managerBreakControl .managerTimePanelHeader h2 { font-size: 19px; }
+.managerBreakControl .managerTimePanelHeader p { max-width: 460px; font-size: 13px; line-height: 1.55; }
+.managerBreakMessage { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; padding: 10px 12px; border: 1px solid; border-radius: 9px; font-size: 12px; }
+.managerBreakControl > .managerBreakMessage { grid-column: 1 / -1; margin: 0; }
+.managerBreakMessage.success { border-color: #bbf7d0; background: #f0fdf4; color: #15803d; }
+.managerBreakMessage.error { border-color: #fecaca; background: #fef2f2; color: #b91c1c; }
+.managerBreakMessage button { display: grid; place-items: center; margin-left: auto; border: 0; background: transparent; color: currentColor; cursor: pointer; }
+.managerBreakStartBox { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; justify-content: stretch; gap: 12px; min-width: 0; padding: 17px; border: 1px solid #e3e8f1; border-radius: 12px; background: #fff; box-shadow: 0 3px 10px rgba(24,39,75,.035); }
+.managerBreakSelectWrap { min-width: 0; }
+.managerBreakSelectWrap label, .managerBreakSelectWrap small { display: block; }
+.managerBreakSelectWrap label { margin-bottom: 7px; color: #475569; font-size: 12px; font-weight: 750; }
+.managerBreakSelectWrap select { width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid #d5ddeb; border-radius: 9px; background: #fff; color: #111827; font: inherit; font-size: 13px; }
+.managerBreakSelectWrap select:disabled { background: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
+.managerBreakSelectWrap small { margin-top: 6px; color: #64748b; font-size: 11px; }
+.managerBreakAction { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border: 1px solid transparent; border-radius: 9px; font: inherit; font-size: 13px; font-weight: 750; cursor: pointer; transition: background .16s ease, transform .16s ease; }
+.managerBreakStartBox .managerBreakAction.start { align-self: start; margin-top: 25px; white-space: nowrap; }
+.managerBreakAction:hover:not(:disabled) { transform: translateY(-1px); }
+.managerBreakAction:disabled { opacity: .55; cursor: not-allowed; }
+.managerBreakAction.start { background: #f59e0b; color: #fff; }
+.managerBreakAction.start:hover:not(:disabled) { background: #d97706; }
+.managerBreakAction.end { background: #059669; color: #fff; }
+.managerBreakAction.end:hover:not(:disabled) { background: #047857; }
+.managerBreakAction.cancel { border-color: #dbe2ec; background: #fff; color: #334155; }
+.managerBreakActiveBox { padding: 15px; border: 1px solid #fed7aa; border-radius: 11px; background: #fffaf5; }
+.managerBreakActiveTop { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.managerBreakTypeBadge { display: flex; align-items: center; gap: 10px; color: #c2410c; }
+.managerBreakTypeBadge > span small, .managerBreakTypeBadge > span strong, .managerBreakElapsed small, .managerBreakElapsed strong { display: block; }
+.managerBreakTypeBadge > span small, .managerBreakElapsed small { color: #78716c; font-size: 10px; }
+.managerBreakTypeBadge > span strong { margin-top: 2px; color: #292524; font-size: 14px; }
+.managerBreakElapsed { text-align: right; }
+.managerBreakElapsed strong { margin-top: 2px; color: #c2410c; font-size: 20px; font-variant-numeric: tabular-nums; }
+.managerBreakCountdown { margin-top: 13px; padding: 12px; border: 1px solid #fed7aa; border-radius: 9px; background: #fff; }
+.managerBreakCountdown > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.managerBreakCountdown > div:first-child span { color: #78716c; font-size: 11px; font-weight: 650; }
+.managerBreakCountdown > div:first-child strong { color: #c2410c; font-size: 18px; font-variant-numeric: tabular-nums; }
+.managerBreakCountdown > small { display: block; margin-top: 7px; color: #78716c; font-size: 10px; }
+.managerBreakProgress { height: 6px; margin-top: 8px; overflow: hidden; border-radius: 9px; background: #ffedd5; }
+.managerBreakProgress span { display: block; height: 100%; border-radius: inherit; background: #f59e0b; transition: width .25s ease; }
+.managerBreakCountdown.limit { border-color: #fecaca; background: #fff7f7; }
+.managerBreakCountdown.limit > div:first-child strong { color: #b91c1c; }
+.managerBreakCountdown.limit .managerBreakProgress span { background: #dc2626; }
+.managerBreakActiveBox > .managerBreakAction { width: 100%; margin-top: 12px; }
+.managerBreakConfirmBackdrop { position: fixed; z-index: 1300; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(15,23,42,.55); backdrop-filter: blur(3px); }
+.managerBreakConfirm { width: min(440px, 100%); padding: 22px; border: 1px solid #e2e8f0; border-radius: 16px; background: #fff; box-shadow: 0 24px 70px rgba(15,23,42,.22); }
+.managerBreakConfirmIcon { width: 44px; height: 44px; display: grid; place-items: center; margin-bottom: 13px; border-radius: 12px; background: #fff7ed; color: #c2410c; }
+.managerBreakConfirm h2 { margin: 0 0 7px; color: #111827; font-size: 18px; }
+.managerBreakConfirm p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.55; }
+.managerBreakConfirm p strong { color: #111827; }
+.managerBreakConfirmActions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 20px; }
+
+@media (max-width: 980px) {
+  .managerTimeEmployeeHeader { flex-direction: column; }
+}
+
+@container manager-time (max-width: 900px) {
+  .managerTimeMetrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .managerTimePage .managerBreakControl { grid-template-columns: minmax(0, 1fr); }
+  .managerBreakControl .managerTimePanelHeader, .managerBreakControl > .managerBreakActiveBox { grid-column: 1; }
+}
+
+@container manager-time (max-width: 560px) {
+  .managerTimeMetrics { grid-template-columns: 1fr; gap: 11px; }
+  .managerTimeMetrics article { min-height: 88px; }
+}
+
+@media (max-width: 620px) {
+  .managerTimeHeader { align-items: flex-start; flex-direction: column; }
+  .managerTimeHeader { padding: 16px; }
+  .managerTimeRefresh { align-self: stretch; }
+  .managerTimeMetrics { grid-template-columns: 1fr; }
+  .managerTimePanel { padding: 14px; }
+  .managerTimeFilters { width: 100%; flex-direction: column; align-items: stretch; }
+  .managerTimeSearch input { width: 100%; }
+  .managerTimeSearch, .managerTimeFilters select { width: 100%; }
+  .managerBreakStartBox { grid-template-columns: 1fr; }
+  .managerBreakSelectWrap { min-width: 0; }
+  .managerBreakStartBox .managerBreakAction.start { width: 100%; margin-top: 0; }
+  .managerBreakAction.start { width: 100%; }
+  .managerBreakActiveTop { align-items: flex-start; }
+  .managerBreakConfirmActions { flex-direction: column-reverse; }
+  .managerBreakConfirmActions .managerBreakAction { width: 100%; }
+}

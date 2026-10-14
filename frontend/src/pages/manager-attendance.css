@@ -1,0 +1,2390 @@
+/* =========================================================
+   MANAGER TEAM ATTENDANCE
+   Consistent with Manager Dashboard / Tasks / Leaves UI
+   ========================================================= */
+
+.managerAttendancePage {
+    width: 100%;
+    min-height: 100%;
+    /* padding: 24px; */
+    background: #f6f8fc;
+    color: #172033;
+    box-sizing: border-box;
+}
+
+.managerAttendancePage *,
+.managerAttendancePage *::before,
+.managerAttendancePage *::after {
+    box-sizing: border-box;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.managerAttendanceHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.managerAttendanceHeader h1 {
+    margin: 0 0 6px;
+    font-size: 25px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: #172033;
+}
+
+.managerAttendanceHeader p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.managerAttendanceHeaderActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.managerAttendanceButton {
+    height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.managerAttendanceButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.managerAttendanceButton:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.managerAttendanceButton.secondary {
+    background: #ffffff;
+    border-color: #d8dfeb;
+    color: #334155;
+    box-shadow: 0 2px 7px rgba(15, 23, 42, 0.04);
+}
+
+.managerAttendanceButton.secondary:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.managerAttendanceButton.primary {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+}
+
+.managerAttendanceButton.primary:hover:not(:disabled) {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* =========================
+   SUMMARY CARDS
+   ========================= */
+
+.managerAttendanceSummary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.managerAttendanceSummaryCard {
+    position: relative;
+    min-width: 0;
+    min-height: 94px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    overflow: hidden;
+    border: 1px solid #e1e7f0;
+    border-top: 3px solid #2563eb;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.045);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.managerAttendanceSummaryCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(15, 23, 42, 0.08);
+}
+
+.managerAttendanceSummaryCard.total {
+    border-top-color: #4f46e5;
+}
+
+.managerAttendanceSummaryCard.present {
+    border-top-color: #16a34a;
+}
+
+.managerAttendanceSummaryCard.late {
+    border-top-color: #d97706;
+}
+
+.managerAttendanceSummaryCard.wfh {
+    border-top-color: #2563eb;
+}
+
+.managerAttendanceSummaryCard.leave {
+    border-top-color: #7c3aed;
+}
+
+.managerAttendanceSummaryCard.insufficient {
+    border-top-color: #dc2626;
+}
+
+.managerAttendanceSummaryCard.active {
+    border-top-color: #0891b2;
+}
+
+.managerAttendanceSummaryCard.break {
+    border-top-color: #ea580c;
+}
+
+.managerAttendanceSummaryIcon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.managerAttendanceSummaryCard.present .managerAttendanceSummaryIcon {
+    background: #ecfdf3;
+    color: #15803d;
+}
+
+.managerAttendanceSummaryCard.late .managerAttendanceSummaryIcon {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.managerAttendanceSummaryCard.wfh .managerAttendanceSummaryIcon {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.managerAttendanceSummaryCard.leave .managerAttendanceSummaryIcon {
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+
+.managerAttendanceSummaryCard.insufficient .managerAttendanceSummaryIcon {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.managerAttendanceSummaryCard.active .managerAttendanceSummaryIcon {
+    background: #ecfeff;
+    color: #0891b2;
+}
+
+.managerAttendanceSummaryCard.break .managerAttendanceSummaryIcon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.managerAttendanceSummaryCard>div:last-child {
+    min-width: 0;
+}
+
+.managerAttendanceSummaryCard span {
+    display: block;
+    margin-bottom: 3px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.managerAttendanceSummaryCard strong {
+    display: block;
+    color: #172033;
+    font-size: 21px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+/* =========================
+   FILTER CARD
+   ========================= */
+
+.managerAttendanceFilterCard {
+    margin-bottom: 18px;
+    padding: 16px;
+    border: 1px solid #e1e7f0;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.managerAttendanceFilterHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 13px;
+}
+
+.managerAttendanceFilterHeader>div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2563eb;
+}
+
+.managerAttendanceFilterHeader strong {
+    color: #273449;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.managerAttendanceClear {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid #2563eb;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.managerAttendanceClear:hover:not(:disabled) {
+    background: #111827;
+    border-color: #111827;
+}
+
+.managerAttendanceClear:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.managerAttendanceFilters {
+    display: grid;
+    grid-template-columns: minmax(250px, 1.6fr) repeat(4, minmax(145px, 1fr));
+    gap: 10px;
+}
+
+.managerAttendanceSearch,
+.managerAttendanceDate {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.managerAttendanceSearch svg,
+.managerAttendanceDate svg {
+    position: absolute;
+    left: 12px;
+    z-index: 1;
+    color: #2563eb;
+    pointer-events: none;
+}
+
+.managerAttendanceSearch input,
+.managerAttendanceDate input,
+.managerAttendanceFilters select {
+    width: 100%;
+    height: 40px;
+    min-width: 0;
+    border: 1px solid #d8dfeb;
+    border-radius: 8px;
+    outline: none;
+    background: #ffffff;
+    color: #273449;
+    font-size: 12.5px;
+    font-family: inherit;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.managerAttendanceSearch input,
+.managerAttendanceDate input {
+    padding: 0 12px 0 37px;
+}
+
+.managerAttendanceFilters select {
+    padding: 0 30px 0 11px;
+    cursor: pointer;
+}
+
+.managerAttendanceSearch input::placeholder {
+    color: #94a3b8;
+}
+
+.managerAttendanceSearch input:focus,
+.managerAttendanceDate input:focus,
+.managerAttendanceFilters select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+/* =========================
+   TABLE CARD
+   ========================= */
+
+.managerAttendanceTableCard {
+    overflow: hidden;
+    border: 1px solid #e1e7f0;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.045);
+}
+
+.managerAttendanceTableHeader {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 17px;
+    border-bottom: 1px solid #e8edf4;
+}
+
+.managerAttendanceTableHeader h2 {
+    margin: 0 0 3px;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.managerAttendanceTableHeader p {
+    margin: 0;
+    color: #7b8798;
+    font-size: 11.5px;
+}
+
+.managerAttendanceServerBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border: 1px solid #dbeafe;
+    border-radius: 7px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.managerAttendanceTableWrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.managerAttendanceTable {
+    width: 100%;
+    min-width: 1320px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 12px;
+}
+
+.managerAttendanceTable thead th {
+    height: 45px;
+    padding: 0 12px;
+    border-bottom: 1px solid #dfe5ee;
+    background: #f8fafc;
+    color: #526174;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.managerAttendanceTable tbody td {
+    min-height: 64px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #edf1f6;
+    color: #344054;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.managerAttendanceTable tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.managerAttendanceRow {
+    cursor: pointer;
+    outline: none;
+    transition:
+        background 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.managerAttendanceRow:hover {
+    background: #f7f9fd;
+}
+
+.managerAttendanceRow:focus-visible {
+    background: #eff6ff;
+    box-shadow: inset 0 0 0 2px #93c5fd;
+}
+
+/* =========================
+   EMPLOYEE CELL
+   ========================= */
+
+.managerAttendanceEmployee {
+    min-width: 205px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.managerAttendanceAvatar {
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbeafe;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.managerAttendanceEmployee>div:last-child {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.managerAttendanceEmployee strong {
+    max-width: 165px;
+    overflow: hidden;
+    color: #253247;
+    font-size: 12px;
+    font-weight: 650;
+    text-overflow: ellipsis;
+}
+
+.managerAttendanceEmployee span {
+    color: #64748b;
+    font-size: 10.5px;
+}
+
+.managerAttendanceEmployee small {
+    color: #94a3b8;
+    font-size: 9.5px;
+}
+
+/* =========================
+   MODE / STATUS BADGES
+   ========================= */
+
+.managerAttendanceMode,
+.managerAttendanceStatus {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+    padding: 0 8px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 10.5px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.managerAttendanceMode.wfo {
+    border-color: #dbeafe;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.managerAttendanceMode.wfh {
+    border-color: #d1fae5;
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.managerAttendanceStatus.present {
+    border-color: #bbf7d0;
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.managerAttendanceStatus.late {
+    border-color: #fed7aa;
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.managerAttendanceStatus.absent {
+    border-color: #fecaca;
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.managerAttendanceStatus.leave {
+    border-color: #ddd6fe;
+    background: #f5f3ff;
+    color: #6d28d9;
+}
+
+.managerAttendanceStatus.holiday {
+    border-color: #e2e8f0;
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.managerAttendanceStatus.incomplete,
+.managerAttendanceStatus.insufficient {
+    border-color: #fde68a;
+    background: #fffbeb;
+    color: #b45309;
+}
+
+.managerAttendanceStatus.early {
+    border-color: #fed7aa;
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.managerAttendanceStatus.default {
+    border-color: #e2e8f0;
+    background: #f8fafc;
+    color: #475569;
+}
+
+.managerAttendanceTime {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #526174;
+    font-size: 11px;
+}
+
+.managerAttendanceTime svg {
+    color: #2563eb;
+}
+
+.managerAttendanceShortage {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.managerAttendanceOvertime {
+    color: #15803d;
+    font-weight: 700;
+}
+
+.managerAttendanceZero {
+    color: #94a3b8;
+}
+
+/* =========================
+   EMPTY / LOADING / ERROR
+   ========================= */
+
+.managerAttendanceState,
+.managerAttendanceEmpty {
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7px;
+    color: #7b8798;
+    text-align: center;
+}
+
+.managerAttendanceState {
+    padding: 40px 20px;
+}
+
+.managerAttendanceState strong,
+.managerAttendanceEmpty strong {
+    color: #344054;
+    font-size: 13px;
+}
+
+.managerAttendanceState.error {
+    color: #dc2626;
+}
+
+.managerAttendanceState button {
+    height: 34px;
+    margin-top: 5px;
+    padding: 0 13px;
+    border: 1px solid #2563eb;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.managerAttendanceEmpty {
+    padding: 45px 20px !important;
+    color: #94a3b8 !important;
+}
+
+.managerAttendanceEmpty svg {
+    color: #2563eb;
+    margin-bottom: 3px;
+}
+
+.managerAttendanceEmpty span {
+    font-size: 11.5px;
+}
+
+/* =========================
+   PAGINATION
+   ========================= */
+
+.managerAttendancePagination {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 11px 16px;
+    border-top: 1px solid #e8edf4;
+    color: #7b8798;
+    font-size: 11.5px;
+}
+
+.managerAttendancePagination>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.managerAttendancePagination button {
+    min-width: 32px;
+    height: 31px;
+    padding: 0 9px;
+    border: 1px solid #d8dfeb;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #526174;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease;
+}
+
+.managerAttendancePagination button:hover:not(:disabled) {
+    border-color: #93c5fd;
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.managerAttendancePagination button.active {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.managerAttendancePagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* =========================
+   MODAL
+   ========================= */
+
+.managerAttendanceModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: rgba(15, 23, 42, 0.52);
+    backdrop-filter: blur(3px);
+    animation: managerAttendanceOverlayIn 0.18s ease;
+}
+
+.managerAttendanceModal {
+    width: min(900px, 100%);
+    max-height: min(86vh, 760px);
+    overflow: hidden;
+    border: 1px solid #dfe5ee;
+    border-radius: 13px;
+    background: #ffffff;
+    box-shadow: 0 25px 70px rgba(15, 23, 42, 0.2);
+    animation: managerAttendanceModalIn 0.2s ease;
+}
+
+.managerAttendanceModalHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 19px 21px;
+    border-bottom: 1px solid #e7ecf3;
+    background: #fbfcfe;
+}
+
+.managerAttendanceModalHeader>div {
+    min-width: 0;
+}
+
+.managerAttendanceModalHeader span {
+    display: block;
+    margin-bottom: 4px;
+    color: #2563eb;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    text-transform: uppercase;
+}
+
+.managerAttendanceModalHeader h2 {
+    margin: 0 0 3px;
+    color: #172033;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.managerAttendanceModalHeader p {
+    margin: 0;
+    color: #7b8798;
+    font-size: 11.5px;
+}
+
+.managerAttendanceModalHeader>button {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe2ec;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #64748b;
+    cursor: pointer;
+    transition:
+        background 0.16s ease,
+        color 0.16s ease;
+}
+
+.managerAttendanceModalHeader>button:hover {
+    background: #f1f5f9;
+    color: #111827;
+}
+
+.managerAttendanceModalBody {
+    max-height: calc(86vh - 148px);
+    overflow-y: auto;
+    padding: 20px 21px;
+}
+
+.managerAttendanceProfile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    margin-bottom: 17px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.managerAttendanceModalAvatar {
+    width: 45px;
+    height: 45px;
+    flex: 0 0 45px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.managerAttendanceProfile>div:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.managerAttendanceProfile strong {
+    color: #253247;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.managerAttendanceProfile span:not(.managerAttendanceStatus) {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.managerAttendanceProfile small {
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+.managerAttendanceDetailGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.managerAttendanceDetailGrid>div {
+    min-height: 69px;
+    padding: 11px 12px;
+    border: 1px solid #e5eaf1;
+    border-radius: 9px;
+    background: #ffffff;
+}
+
+.managerAttendanceDetailGrid span {
+    display: block;
+    margin-bottom: 5px;
+    color: #8a96a7;
+    font-size: 10.5px;
+    font-weight: 500;
+}
+
+.managerAttendanceDetailGrid strong {
+    display: block;
+    color: #344054;
+    font-size: 12.5px;
+    font-weight: 650;
+}
+
+.managerAttendanceCalculationNote {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 11px 12px;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #475569;
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.managerAttendanceCalculationNote svg {
+    flex: 0 0 auto;
+    margin-top: 1px;
+    color: #2563eb;
+}
+
+.managerAttendanceModalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 13px 21px;
+    border-top: 1px solid #e7ecf3;
+    background: #fbfcfe;
+}
+
+.managerAttendanceModalFooter button {
+    height: 36px;
+    padding: 0 15px;
+    border: 1px solid #d5dce7;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.managerAttendanceModalFooter button:hover {
+    background: #f1f5f9;
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+.managerAttendanceSpin {
+    animation: managerAttendanceSpin 0.9s linear infinite;
+}
+
+@keyframes managerAttendanceSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes managerAttendanceOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes managerAttendanceModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1250px) {
+    .managerAttendanceSummary {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .managerAttendanceFilters {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .managerAttendanceSearch {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 900px) {
+    .managerAttendancePage {
+        padding: 18px;
+    }
+
+    .managerAttendanceHeader {
+        flex-direction: column;
+    }
+
+    .managerAttendanceHeaderActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .managerAttendanceSummary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .managerAttendanceFilters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .managerAttendanceSearch {
+        grid-column: span 2;
+    }
+
+    .managerAttendanceDetailGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .managerAttendancePage {
+        padding: 13px;
+    }
+
+    .managerAttendanceHeader h1 {
+        font-size: 21px;
+    }
+
+    .managerAttendanceHeaderActions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .managerAttendanceButton {
+        width: 100%;
+    }
+
+    .managerAttendanceSummary {
+        grid-template-columns: 1fr;
+    }
+
+    .managerAttendanceFilters {
+        grid-template-columns: 1fr;
+    }
+
+    .managerAttendanceSearch {
+        grid-column: auto;
+    }
+
+    .managerAttendanceFilterHeader {
+        align-items: flex-start;
+    }
+
+    .managerAttendanceTableHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .managerAttendancePagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .managerAttendancePagination>div {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    .managerAttendanceModalOverlay {
+        padding: 10px;
+    }
+
+    .managerAttendanceModal {
+        max-height: 92vh;
+        border-radius: 11px;
+    }
+
+    .managerAttendanceModalBody {
+        max-height: calc(92vh - 150px);
+        padding: 14px;
+    }
+
+    .managerAttendanceModalHeader {
+        padding: 15px;
+    }
+
+    .managerAttendanceProfile {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .managerAttendanceProfile .managerAttendanceStatus {
+        margin-left: 57px;
+    }
+
+    .managerAttendanceDetailGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .managerAttendanceModalFooter {
+        padding: 11px 14px;
+    }
+}
+
+/* =========================================================
+   MY / TEAM VIEW SWITCHER
+   Shared by Manager Attendance + Manager Reports
+========================================================= */
+.managerViewSwitcher {
+    display: inline-flex;
+    align-items: stretch;
+    gap: 8px;
+    padding: 4px;
+    margin: 0 0 18px;
+    border: 1px solid #dbe3ec;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+    max-width: 100%;
+}
+
+.managerViewSwitchButton {
+    min-width: 188px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #334155;
+    cursor: pointer;
+    text-align: left;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.managerViewSwitchButton:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+}
+
+.managerViewSwitchButton.active {
+    color: #ffffff;
+    background: #4f46e5;
+    border-color: #4f46e5;
+    box-shadow: 0 5px 14px rgba(79, 70, 229, .22);
+}
+
+.managerViewSwitchButton:active {
+    transform: translateY(1px);
+}
+
+.managerViewSwitchIcon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: #f1f5f9;
+    color: #475569;
+    transition: background .18s ease, color .18s ease;
+}
+
+.managerViewSwitchButton.active .managerViewSwitchIcon {
+    background: rgba(255, 255, 255, .16);
+    color: #ffffff;
+}
+
+.managerViewSwitchText {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.managerViewSwitchText strong {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.managerViewSwitchText small {
+    font-size: 11px;
+    line-height: 1.2;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.managerViewSwitchButton.active .managerViewSwitchText small {
+    color: rgba(255, 255, 255, .78);
+}
+
+/* Team-only report category switcher */
+.managerReportTypeSwitcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    margin: -4px 0 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+
+.managerReportTypeSwitcher button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 36px;
+    padding: 7px 13px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .18s ease;
+}
+
+.managerReportTypeSwitcher button:hover {
+    background: #ffffff;
+    color: #334155;
+}
+
+.managerReportTypeSwitcher button.active {
+    background: #ffffff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, .10);
+}
+
+/* Report filter grid */
+.managerReportFilters {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(170px, 1fr));
+    gap: 10px;
+}
+
+.managerReportFilterField {
+    position: relative;
+    min-width: 0;
+}
+
+.managerReportFilterField>span {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    color: #2563eb;
+    pointer-events: none;
+}
+
+.managerReportFilterField input,
+.managerReportFilterField select {
+    width: 100%;
+    min-height: 40px;
+    padding: 9px 12px;
+    border: 1px solid #d7e0eb;
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: #334155;
+    font-size: 12px;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.managerReportFilterField input {
+    padding-left: 36px;
+}
+
+.managerReportFilterField select {
+    padding-left: 12px;
+}
+
+.managerReportFilterField input:focus,
+.managerReportFilterField select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, .09);
+}
+
+.managerReportFilterField input:disabled {
+    background: #f8fafc;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.managerAttendanceSummaryCard.overtime .managerAttendanceSummaryIcon {
+    color: #7c3aed;
+    background: #f3e8ff;
+}
+
+@media (max-width: 1050px) {
+    .managerReportFilters {
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .managerViewSwitcher {
+        display: flex;
+        width: 100%;
+    }
+
+    .managerViewSwitchButton {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .managerReportTypeSwitcher {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .managerReportFilters {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .managerViewSwitchButton {
+        min-height: 52px;
+        padding: 7px 9px;
+        gap: 7px;
+    }
+
+    .managerViewSwitchIcon {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
+    }
+
+    .managerViewSwitchText small {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   FINAL MANAGER VIEW / REPORT TYPE BUTTON POLISH
+   Matches the compact My Tasks / Team Tasks control.
+========================================================= */
+.managerViewSwitcher {
+    gap: 0;
+    padding: 4px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #dbe3ec;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+}
+
+.managerViewSwitchButton {
+    min-width: 145px;
+    min-height: 40px;
+    padding: 7px 16px;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: #ffffff;
+    color: #334155;
+    justify-content: center;
+    text-align: center;
+}
+
+.managerViewSwitchButton:hover {
+    background: #f5f3ff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+}
+
+.managerViewSwitchButton.active,
+.managerViewSwitchButton.active:hover {
+    background: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, .22);
+}
+
+.managerViewSwitchIcon {
+    width: auto;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 0;
+    background: transparent;
+    color: currentColor;
+}
+
+.managerViewSwitchButton.active .managerViewSwitchIcon {
+    background: transparent;
+    color: #ffffff;
+}
+
+.managerViewSwitchText {
+    display: block;
+}
+
+.managerViewSwitchText strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: currentColor;
+}
+
+.managerViewSwitchText small {
+    display: none;
+}
+
+/* Attendance / Tasks / Leaves: proper hover and active states */
+.managerReportTypeSwitcher {
+    gap: 2px;
+    padding: 4px;
+    margin: -4px 0 18px;
+    border: 1px solid #dbe3ec;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.managerReportTypeSwitcher button,
+.managerReportTypeSwitcher button:visited {
+    min-height: 40px;
+    min-width: 108px;
+    padding: 7px 15px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.managerReportTypeSwitcher button:hover {
+    background: #f5f3ff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+}
+
+.managerReportTypeSwitcher button.active,
+.managerReportTypeSwitcher button.active:hover {
+    background: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, .20);
+}
+
+.managerReportTypeSwitcher button:active {
+    transform: translateY(1px);
+}
+
+/* Category selection modal */
+.managerReportChoiceOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, .48);
+    backdrop-filter: blur(3px);
+    animation: managerReportChoiceFade .16s ease-out;
+}
+
+.managerReportChoiceModal {
+    width: min(420px, 100%);
+    padding: 22px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 22px 55px rgba(15, 23, 42, .22);
+    animation: managerReportChoicePop .18s ease-out;
+}
+
+.managerReportChoiceIcon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 13px;
+    border-radius: 12px;
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.managerReportChoiceContent h3 {
+    margin: 0;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.managerReportChoiceContent p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.managerReportChoiceActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.managerReportChoiceActions button {
+    min-height: 38px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+.managerReportChoiceCancel {
+    border: 1px solid #dbe3ec;
+    background: #ffffff;
+    color: #475569;
+}
+
+.managerReportChoiceCancel:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.managerReportChoiceConfirm {
+    border: 1px solid #4f46e5;
+    background: #4f46e5;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, .18);
+}
+
+.managerReportChoiceConfirm:hover {
+    background: #4338ca;
+    border-color: #4338ca;
+}
+
+@keyframes managerReportChoiceFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes managerReportChoicePop {
+    from {
+        opacity: 0;
+        transform: translateY(7px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 640px) {
+
+    .managerViewSwitcher,
+    .managerReportTypeSwitcher {
+        width: 100%;
+    }
+
+    .managerViewSwitchButton,
+    .managerReportTypeSwitcher button {
+        min-width: 0;
+        flex: 1 1 0;
+    }
+}
+
+/* =========================================================
+   MANAGER REPORTS - FINAL TABLE / MODAL / SWITCH POLISH
+========================================================= */
+.managerReportsPage {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+}
+
+.managerReportsHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px
+}
+
+.managerReportsHeader h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 27px;
+    line-height: 1.2
+}
+
+.managerReportsHeader p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 12px
+}
+
+.managerReportsHeaderActions {
+    display: flex;
+    gap: 9px
+}
+
+.managerReportsRefresh,
+.managerReportsExport {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 14px;
+    border: 1px solid #d8e0ea;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    font-weight: 650;
+    cursor: pointer;
+    transition: .18s ease
+}
+
+.managerReportsRefresh:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1
+}
+
+.managerReportsExport {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+    box-shadow: 0 5px 13px rgba(37, 99, 235, .18)
+}
+
+.managerReportsExport:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8
+}
+
+.managerReportsSwitcherRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px
+}
+
+.managerReportsSwitcherRow .managerViewSwitcher {
+    margin: 0
+}
+
+.managerTeamReportTypeSwitch {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border: 1px solid #dbe3ec;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, .04)
+}
+
+.managerTeamReportTypeSwitch button {
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 105px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: #fff;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease
+}
+
+.managerTeamReportTypeSwitch button:hover {
+    background: #f5f3ff;
+    color: #4f46e5;
+    border-color: #c7d2fe
+}
+
+.managerTeamReportTypeSwitch button.active,
+.managerTeamReportTypeSwitch button.active:hover {
+    background: #4f46e5;
+    color: #fff;
+    border-color: #4f46e5;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, .2)
+}
+
+.managerTeamReportTypeSwitch button:active {
+    transform: translateY(1px)
+}
+
+.managerReportsSummary {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px
+}
+
+.managerReportStat {
+    min-height: 88px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 11px;
+    align-content: center;
+    padding: 14px 16px;
+    border: 1px solid #e2e8f0;
+    border-top: 3px solid #4f46e5;
+    border-radius: 11px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, .04)
+}
+
+.managerReportStat svg {
+    grid-row: 1/3;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #2563eb
+}
+
+.managerReportStat span {
+    color: #64748b;
+    font-size: 10.5px
+}
+
+.managerReportStat strong {
+    margin-top: 2px;
+    color: #172033;
+    font-size: 20px
+}
+
+.managerReportStat.green {
+    border-top-color: #16a34a
+}
+
+.managerReportStat.green svg {
+    background: #ecfdf5;
+    color: #16a34a
+}
+
+.managerReportStat.orange {
+    border-top-color: #f59e0b
+}
+
+.managerReportStat.orange svg {
+    background: #fff7ed;
+    color: #ea580c
+}
+
+.managerReportStat.cyan {
+    border-top-color: #0891b2
+}
+
+.managerReportStat.cyan svg {
+    background: #ecfeff;
+    color: #0891b2
+}
+
+.managerReportStat.purple {
+    border-top-color: #7c3aed
+}
+
+.managerReportStat.purple svg {
+    background: #f3e8ff;
+    color: #7c3aed
+}
+
+.managerReportFilterCard,
+.managerReportTableCard {
+    overflow: hidden;
+    border: 1px solid #dfe6ee;
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, .03)
+}
+
+.managerReportFilterHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 17px;
+    border-bottom: 1px solid #e8edf3
+}
+
+.managerReportFilterHeading>div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #334155;
+    font-size: 12px
+}
+
+.managerReportFilterHeading svg {
+    color: #2563eb
+}
+
+.managerReportFilterHeading button {
+    height: 35px;
+    padding: 0 13px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: .18s ease
+}
+
+.managerReportFilterHeading button:hover {
+    background: #111827
+}
+
+.managerReportFilterGrid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.6fr) repeat(2, minmax(140px, .8fr)) repeat(4, minmax(135px, 1fr));
+    gap: 9px;
+    padding: 14px 16px;
+    background: #fbfcfe
+}
+
+.managerReportFilterField {
+    position: relative;
+    display: flex;
+    align-items: center
+}
+
+.managerReportFilterField>svg {
+    position: absolute;
+    left: 10px;
+    color: #2563eb;
+    pointer-events: none
+}
+
+.managerReportFilterField input,
+.managerReportFilterGrid select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d5dee9;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    outline: none;
+    font: inherit;
+    font-size: 11px
+}
+
+.managerReportFilterField input {
+    padding: 0 10px 0 32px
+}
+
+.managerReportFilterGrid select {
+    padding: 0 10px
+}
+
+.managerReportFilterField input:focus,
+.managerReportFilterGrid select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .08)
+}
+
+.managerReportTableHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid #e8edf3
+}
+
+.managerReportTableHeader h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 16px
+}
+
+.managerReportTableHeader p {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 10.5px
+}
+
+.managerReportTableWrap {
+    width: 100%;
+    overflow: auto
+}
+
+.managerReportTable {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: collapse
+}
+
+.managerReportTable th {
+    padding: 12px 13px;
+    border-bottom: 1px solid #dbe3ec;
+    background: #f8fafc;
+    color: #526176;
+    font-size: 9.5px;
+    font-weight: 800;
+    text-align: left;
+    white-space: nowrap
+}
+
+.managerReportTable td {
+    padding: 12px 13px;
+    border-bottom: 1px solid #edf1f5;
+    color: #334155;
+    font-size: 11px;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.managerReportTable tbody tr:last-child td {
+    border-bottom: 0
+}
+
+.managerReportClickableRow {
+    cursor: pointer;
+    transition: background .16s ease, box-shadow .16s ease
+}
+
+.managerReportClickableRow:hover {
+    background: #f7f9fd
+}
+
+.managerReportClickableRow:focus-visible {
+    background: #eff6ff;
+    box-shadow: inset 0 0 0 2px #93c5fd
+}
+
+.managerReportTable td strong {
+    color: #172033
+}
+
+.managerReportTable td small {
+    display: block;
+    margin-top: 2px;
+    color: #94a3b8;
+    font-size: 9px
+}
+
+.managerReportStatus {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 8px;
+    border-radius: 99px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 9.5px;
+    font-weight: 750
+}
+
+.managerReportStatus.present,
+.managerReportStatus.approved,
+.managerReportStatus.completed {
+    background: #ecfdf5;
+    color: #15803d
+}
+
+.managerReportStatus.late,
+.managerReportStatus.pending,
+.managerReportStatus.in-progress {
+    background: #fff7ed;
+    color: #c2410c
+}
+
+.managerReportStatus.rejected,
+.managerReportStatus.cancelled {
+    background: #fef2f2;
+    color: #dc2626
+}
+
+.managerReportStatus.todo,
+.managerReportStatus.on-leave {
+    background: #eff6ff;
+    color: #2563eb
+}
+
+.managerReportEmpty {
+    height: 190px;
+    text-align: center !important
+}
+
+.managerReportEmpty svg {
+    display: block;
+    margin: 0 auto 8px;
+    color: #6366f1
+}
+
+.managerReportEmpty strong,
+.managerReportEmpty span {
+    display: block
+}
+
+.managerReportEmpty span {
+    margin-top: 3px;
+    color: #94a3b8
+}
+
+.managerReportPagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 15px;
+    border-top: 1px solid #edf1f5;
+    color: #64748b;
+    font-size: 10.5px
+}
+
+.managerReportPagination>div {
+    display: flex;
+    gap: 4px
+}
+
+.managerReportPagination button {
+    min-width: 31px;
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid #dbe3ec;
+    border-radius: 7px;
+    background: #fff;
+    color: #475569;
+    font-size: 10px;
+    cursor: pointer
+}
+
+.managerReportPagination button:hover:not(:disabled) {
+    background: #f5f3ff;
+    color: #4f46e5;
+    border-color: #c7d2fe
+}
+
+.managerReportPagination button.active {
+    background: #4f46e5;
+    color: #fff;
+    border-color: #4f46e5
+}
+
+.managerReportPagination button:disabled {
+    opacity: .45;
+    cursor: not-allowed
+}
+
+.managerReportModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, .58);
+    backdrop-filter: blur(3px);
+    animation: managerReportFade .16s ease-out
+}
+
+.managerReportModal {
+    width: min(720px, 100%);
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #dfe6ee;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(15, 23, 42, .28);
+    animation: managerReportPop .18s ease-out
+}
+
+.managerReportModal>header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 15px 18px;
+    border-bottom: 1px solid #e5eaf0
+}
+
+.managerReportModalIcon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4f46e5
+}
+
+.managerReportModal header>div:nth-child(2) {
+    flex: 1
+}
+
+.managerReportModal header h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 17px
+}
+
+.managerReportModal header p {
+    margin: 3px 0 0;
+    color: #64748b;
+    font-size: 10.5px
+}
+
+.managerReportModal header button {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #dbe3ec;
+    border-radius: 9px;
+    background: #fff;
+    color: #64748b;
+    cursor: pointer
+}
+
+.managerReportModalBody {
+    overflow: auto;
+    padding: 16px 18px
+}
+
+.managerReportProfile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
+    background: #f8fafc
+}
+
+.managerReportProfile>div:nth-child(2) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+}
+
+.managerReportProfile strong {
+    font-size: 13px;
+    color: #111827
+}
+
+.managerReportProfile small {
+    font-size: 10px;
+    color: #64748b
+}
+
+.managerReportAvatar {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 800
+}
+
+.managerReportDetailGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 14px
+}
+
+.managerReportDetailGrid>div {
+    min-height: 55px;
+    padding: 10px 12px;
+    border: 1px solid #dfe6ee;
+    border-left: 3px solid #6366f1;
+    border-radius: 9px;
+    background: #fff
+}
+
+.managerReportDetailGrid span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 8.5px;
+    font-weight: 800;
+    text-transform: uppercase
+}
+
+.managerReportDetailGrid strong {
+    color: #111827;
+    font-size: 11.5px
+}
+
+.managerReportReasonBox {
+    margin-top: 10px;
+    padding: 11px 12px;
+    border: 1px solid #dfe6ee;
+    border-radius: 9px;
+    background: #f8fafc
+}
+
+.managerReportReasonBox span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 8.5px;
+    font-weight: 800;
+    text-transform: uppercase
+}
+
+.managerReportReasonBox p {
+    margin: 0;
+    color: #334155;
+    font-size: 11.5px;
+    line-height: 1.5
+}
+
+.managerReportModal>footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 18px;
+    border-top: 1px solid #e5eaf0
+}
+
+.managerReportModal>footer button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #dbe3ec;
+    border-radius: 8px;
+    background: #fff;
+    color: #334155;
+    font-weight: 650;
+    cursor: pointer
+}
+
+.managerReportModal>footer button:hover {
+    background: #f8fafc
+}
+
+@keyframes managerReportFade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes managerReportPop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.985)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+@media(max-width:1200px) {
+    .managerReportsSummary {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .managerReportFilterGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
+
+    .managerReportFilterField.search {
+        grid-column: span 2
+    }
+}
+
+@media(max-width:850px) {
+    .managerReportsSwitcherRow {
+        align-items: stretch;
+        flex-direction: column
+    }
+
+    .managerTeamReportTypeSwitch {
+        width: 100%
+    }
+
+    .managerTeamReportTypeSwitch button {
+        flex: 1
+    }
+
+    .managerReportsSummary {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .managerReportFilterGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .managerReportFilterField.search {
+        grid-column: span 2
+    }
+
+    .managerReportsHeader {
+        flex-direction: column
+    }
+
+    .managerReportsHeaderActions {
+        width: 100%
+    }
+
+    .managerReportsRefresh,
+    .managerReportsExport {
+        flex: 1
+    }
+}
+
+@media(max-width:560px) {
+    .managerReportsSummary {
+        grid-template-columns: 1fr
+    }
+
+    .managerReportFilterGrid {
+        grid-template-columns: 1fr
+    }
+
+    .managerReportFilterField.search {
+        grid-column: auto
+    }
+
+    .managerViewSwitcher {
+        width: 100%
+    }
+
+    .managerViewSwitchButton {
+        min-width: 0;
+        flex: 1
+    }
+
+    .managerTeamReportTypeSwitch {
+        overflow: auto
+    }
+
+    .managerTeamReportTypeSwitch button {
+        min-width: 100px
+    }
+
+    .managerReportDetailGrid {
+        grid-template-columns: 1fr
+    }
+
+    .managerReportPagination {
+        align-items: flex-start;
+        gap: 8px;
+        flex-direction: column
+    }
+}

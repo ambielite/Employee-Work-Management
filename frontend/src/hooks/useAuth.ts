@@ -1,0 +1,2 @@
+import {useEffect,useState} from 'react'; import {get} from '../api/client'; import type {User} from '../types';
+export function useAuth(){const [user,setUser]=useState<User|null>(null); const [loading,setLoading]=useState(true); useEffect(()=>{if(!localStorage.getItem('token')){setLoading(false);return} get<User>('/auth/me').then(setUser).catch(()=>localStorage.removeItem('token')).finally(()=>setLoading(false))},[]); return {user,loading,setUser};}

@@ -1,0 +1,1083 @@
+/* =========================================================
+   EMPLOYEE DASHBOARD
+   Page-specific styles only.
+   ========================================================= */
+
+.employeeDashboard {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    color: var(--color-text, #0f172a);
+}
+
+/* Header */
+
+.employeeDashboardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.employeeDashboardIdentity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+}
+
+.employeeDashboardAvatar {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    display: grid;
+    place-items: center;
+    color: var(--color-primary, #2563eb);
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+}
+
+.employeeDashboardEyebrow {
+    margin-bottom: 2px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 550;
+}
+
+.employeeDashboardHeader h1 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.35px;
+}
+
+.employeeDashboardHeader p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.employeeDashboardHeaderActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.employeeActionBtn,
+.employeeRefreshBtn {
+    min-height: 38px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 13px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: 0.18s ease;
+}
+
+.employeeActionBtn:disabled,
+.employeeRefreshBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.employeeActionBtn.office {
+    color: #fff;
+    background: #15803d;
+}
+
+.employeeActionBtn.office:hover:not(:disabled) {
+    background: #111827;
+    transform: translateY(-1px);
+}
+
+.employeeActionBtn.home {
+    color: #fff;
+    background: #4f46e5;
+}
+
+.employeeActionBtn.home:hover:not(:disabled) {
+    background: #111827;
+    transform: translateY(-1px);
+}
+
+.employeeActionBtn.logout {
+    color: #fff;
+    background: #dc2626;
+}
+
+.employeeActionBtn.logout:hover:not(:disabled) {
+    background: #111827;
+    transform: translateY(-1px);
+}
+
+.employeeCheckedOutBadge {
+    min-height: 38px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #15803d;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.employeeRefreshBtn {
+    width: 38px;
+    padding: 0;
+    color: #475569;
+    background: #fff;
+    border-color: #cbd5e1;
+}
+
+.employeeRefreshBtn:hover:not(:disabled) {
+    color: #fff;
+    background: #111827;
+    border-color: #111827;
+    transform: translateY(-1px);
+}
+
+.employeeSpin {
+    animation: employeeSpin 0.9s linear infinite;
+}
+
+@keyframes employeeSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Start banner */
+
+.employeeStartBanner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    background: #fff;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.employeeStartIcon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 10px;
+}
+
+.employeeStartBanner div:last-child {
+    min-width: 0;
+}
+
+.employeeStartBanner strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #0f172a;
+    font-size: 13px;
+}
+
+.employeeStartBanner span {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+/* Idle warning */
+
+.employeeIdleWarning {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.employeeIdleWarning span {
+    flex: 1;
+}
+
+.employeeIdleWarning button {
+    border: 0;
+    border-radius: 7px;
+    padding: 7px 10px;
+    color: #fff;
+    background: #111827;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+/* Statistics */
+
+.employeeStatsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.employeeMetricCard {
+    position: relative;
+    min-width: 0;
+    min-height: 112px;
+    padding: 15px 16px 14px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dce3ea;
+    border-radius: 13px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.045);
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.employeeMetricCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: #2563eb;
+}
+
+.employeeMetricCard:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+    box-shadow: 0 7px 18px rgba(15, 23, 42, 0.075);
+}
+
+.employeeMetricCard.mode::before {
+    background: #2563eb;
+}
+
+.employeeMetricCard.status::before {
+    background: #16a34a;
+}
+
+.employeeMetricCard.time::before {
+    background: #7c3aed;
+}
+
+.employeeMetricCard.active::before {
+    background: #0891b2;
+}
+
+.employeeMetricCard.break::before {
+    background: #f59e0b;
+}
+
+.employeeMetricCard.idle::before {
+    background: #64748b;
+}
+
+.employeeMetricCard.required::before {
+    background: #0f766e;
+}
+
+.employeeMetricCard.remaining::before {
+    background: #dc2626;
+}
+
+.employeeMetricCard span {
+    display: block;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 550;
+}
+
+.employeeMetricCard strong {
+    display: block;
+    color: #0f172a;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 750;
+    letter-spacing: -0.25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employeeMetricCard small {
+    display: block;
+    margin-top: 7px;
+    color: #000000;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* Main panels */
+
+.employeeMainGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.employeePanel {
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #dce3ea;
+    border-radius: 13px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.045);
+    overflow: hidden;
+}
+
+.employeePanelHeader {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 13px 16px;
+    border-bottom: 1px solid #e7edf3;
+}
+
+.employeePanelHeader h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.employeePanelHeader p {
+    margin: 5px 0 0;
+    color: #000000;
+    font-size: 11px;
+}
+
+.employeePanelIcon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 32px;
+    color: #2563eb;
+    background: #eff6ff;
+    border-radius: 8px;
+}
+
+.employeeSummaryGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.employeeSummaryGrid>div {
+    min-width: 0;
+    min-height: 51px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.employeeSummaryGrid>div:nth-child(odd) {
+    border-right: 1px solid #edf1f5;
+}
+
+.employeeSummaryGrid>div:nth-last-child(-n + 2) {
+    border-bottom: 0;
+}
+
+.employeeSummaryGrid div span:first-child {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+    font-size: 11px;
+}
+
+.employeeSummaryGrid div b {
+    display: block;
+    color: #0f172a;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.employeeSummaryStatus {
+    grid-column: 1 / -1;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 60px !important;
+    border-right: 0 !important;
+}
+
+.employeeSummaryStatus>span:first-child {
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.employeeStatusBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: min(100%, 360px);
+    min-height: 28px;
+    padding: 5px 11px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 750;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.employeeStatusBadge.success {
+    color: #15803d;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.employeeStatusBadge.warning {
+    color: #b45309;
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.employeeStatusBadge.neutral {
+    color: #475569;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+/* Timeline */
+
+.employeeTimeline {
+    padding: 8px 16px 11px;
+}
+
+.employeeTimelineItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 57px;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.employeeTimelineItem:last-child {
+    border-bottom: 0;
+}
+
+.employeeTimelineIcon {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: grid;
+    place-items: center;
+    color: #2563eb;
+    background: #eff6ff;
+    border-radius: 50%;
+}
+
+.employeeTimelineContent {
+    min-width: 0;
+}
+
+.employeeTimelineContent strong {
+    display: block;
+    color: #0f172a;
+    font-size: 12px;
+}
+
+.employeeTimelineContent span {
+    display: block;
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+/* Empty */
+
+.employeeEmptyState {
+    min-height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.employeeEmptyState svg {
+    color: #64748b;
+}
+
+/* Tasks */
+
+.employeeTasksPanel {
+    margin-bottom: 16px;
+}
+
+.employeeViewAll {
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.employeeViewAll:hover {
+    color: #111827;
+    text-decoration: underline;
+}
+
+/* .employeeTaskList {
+    padding: 0 16px;
+} */
+
+.employeeTaskItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 67px;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.employeeTaskItem:last-child {
+    border-bottom: 0;
+}
+
+.employeeTaskInfo {
+    min-width: 0;
+}
+
+.employeeTaskInfo strong {
+    display: block;
+    overflow: hidden;
+    color: #0f172a;
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employeeTaskInfo span {
+    display: block;
+    margin-top: 4px;
+    color: #000000;
+    font-size: 10px;
+}
+
+.employeeTaskMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+.employeeTaskStatus,
+.employeeTaskPriority {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 3px 8px;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.employeeTaskPriority {
+    color: #1d4ed8;
+    background: #eff6ff;
+    border-color: #dbeafe;
+}
+
+.employeeTaskLoading {
+    padding: 22px 16px;
+    color: #64748b;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* Loading */
+
+.employeeDashboardLoading {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.employeeDashboardLoader {
+    width: 26px;
+    height: 26px;
+    border: 3px solid #dbeafe;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: employeeSpin 0.8s linear infinite;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .employeeStatsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .employeeDashboard {
+        max-width: none;
+    }
+}
+
+@media (max-width: 850px) {
+    .employeeDashboardHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .employeeDashboardHeaderActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .employeeMainGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .employeeStatsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .employeeSummaryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .employeeSummaryGrid>div:nth-child(odd) {
+        border-right: 0;
+    }
+
+    .employeeSummaryGrid>div:nth-last-child(-n + 2) {
+        border-bottom: 1px solid #edf1f5;
+    }
+
+    .employeeSummaryGrid>div:last-child {
+        border-bottom: 0;
+    }
+
+    .employeeSummaryStatus {
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .employeeStatusBadge {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .employeeDashboardHeader h1 {
+        font-size: 21px;
+    }
+
+    .employeeDashboardHeaderActions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .employeeActionBtn {
+        width: 100%;
+    }
+
+    .employeeRefreshBtn,
+    .employeeCheckedOutBadge {
+        width: 100%;
+    }
+
+    .employeeCheckedOutBadge {
+        grid-column: 1 / -1;
+    }
+
+    .employeeTaskItem {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+        padding: 12px 0;
+    }
+
+    .employeeTaskMeta {
+        flex-wrap: wrap;
+    }
+}
+
+.employeeWorkModeDisabled {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 9px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* =========================================================
+   LOGIN / WORK MODE SELECTION
+   Reuses existing dashboard typography and button sizing.
+   ========================================================= */
+
+.employeeLoginBtn {
+    color: #fff;
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.employeeLoginBtn:hover:not(:disabled) {
+    color: #fff;
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.employeeSelectedWorkMode {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.employeeSelectedWorkMode.office {
+    color: #15803d;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.employeeSelectedWorkMode.home {
+    color: #4338ca;
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+.employeeModeChangeBtn {
+    min-height: 38px;
+    padding: 0 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    color: #475569;
+    background: #fff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: 0.18s ease;
+}
+
+.employeeModeChangeBtn:hover:not(:disabled) {
+    color: #111827;
+    border-color: #94a3b8;
+    background: #f8fafc;
+}
+
+.employeeModeChangeBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   WORK TIMELINE
+   Simple, compact, attendance-driven visualization.
+   ========================================================= */
+
+.employeeTimelinePanel {
+    min-width: 0;
+}
+
+.employeeTimelineHeader {
+    min-height: 64px;
+}
+
+.employeeTimelineHeaderRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.employeeTimelineViewSwitch {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    border: 1px solid #dce3ea;
+    border-radius: 9px;
+    background: #f8fafc;
+}
+
+.employeeTimelineViewSwitch button {
+    min-width: 48px;
+    min-height: 28px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 7px;
+    color: #64748b;
+    background: transparent;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.18s ease;
+}
+
+.employeeTimelineViewSwitch button:hover:not(.active) {
+    color: #0f172a;
+    background: #eef2f7;
+}
+
+.employeeTimelineViewSwitch button.active {
+    color: #fff;
+    background: #2563eb;
+}
+
+.employeeSimpleTimeline {
+    min-width: 0;
+    padding: 14px 16px 16px;
+}
+
+.employeeTimelineSummary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.employeeTimelineSummary>div {
+    min-width: 0;
+    padding: 9px 10px;
+    border: 1px solid #e7edf3;
+    border-radius: 9px;
+    background: #f8fafc;
+}
+
+.employeeTimelineSummary span {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+}
+
+.employeeTimelineSummary strong {
+    display: block;
+    margin-top: 4px;
+    overflow: hidden;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 750;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employeeSimpleTimelineLegend {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 10px;
+    color: #64748b;
+    font-size: 9px;
+}
+
+.employeeSimpleTimelineLegend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.employeeSimpleTimelineLegend i {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.employeeSimpleTimelineLegend i.active {
+    background: #2563eb;
+}
+
+.employeeSimpleTimelineLegend i.inactive {
+    background: #f59e0b;
+}
+
+.employeeSimpleTimelineRows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+.employeeSimpleTimelineRows.month {
+    max-height: 300px;
+}
+
+.employeeSimpleTimelineRow {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr) 64px;
+    align-items: center;
+    gap: 9px;
+    min-height: 30px;
+}
+
+.employeeSimpleTimelineLabel {
+    min-width: 0;
+}
+
+.employeeSimpleTimelineLabel strong {
+    display: block;
+    overflow: hidden;
+    color: #0f172a;
+    font-size: 10px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employeeSimpleTimelineLabel small {
+    display: block;
+    margin-top: 2px;
+    color: #000000;
+    font-size: 8px;
+}
+
+.employeeSimpleTimelineTrack {
+    position: relative;
+    height: 12px;
+    overflow: hidden;
+    border: 1px solid #dce3ea;
+    border-radius: 999px;
+    background: #f8fafc;
+}
+
+.employeeSimpleTimelineActive,
+.employeeSimpleTimelineInactive {
+    position: absolute;
+    top: 2px;
+    height: 6px;
+    border-radius: 999px;
+}
+
+.employeeSimpleTimelineActive {
+    left: 0;
+    background: #2563eb;
+}
+
+.employeeSimpleTimelineInactive {
+    background: #f59e0b;
+}
+
+.employeeSimpleTimelineValue {
+    color: #0f172a;
+    font-size: 9px;
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.employeeDayTimelineNote {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 11px;
+    padding-top: 10px;
+    border-top: 1px solid #edf1f5;
+    color: #64748b;
+    font-size: 9px;
+}
+
+.employeeTimelineEmpty {
+    min-height: 60px;
+    margin-top: 8px;
+    border-top: 1px solid #edf1f5;
+}
+
+@media (max-width: 850px) {
+    .employeeTimelineHeaderRight {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .employeeTimelineSummary {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .employeeTimelineViewSwitch {
+        flex: 1;
+    }
+
+    .employeeTimelineViewSwitch button {
+        flex: 1 1 0;
+    }
+
+    .employeeTimelineHeaderRight {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .employeeTimelineHeaderRight .employeePanelIcon {
+        display: none;
+    }
+
+    .employeeSimpleTimelineRow {
+        grid-template-columns: 48px minmax(0, 1fr) 58px;
+        gap: 6px;
+    }
+
+    .employeeDayTimelineNote {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

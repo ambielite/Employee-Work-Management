@@ -1,0 +1,445 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String         @id @default(uuid())
+  email              String         @unique
+  passwordHash       String
+  role               Role
+  accountStatus      AccountStatus  @default(ACTIVE)
+  fullName           String?
+  phone              String?
+  designation        String?
+  dateOfJoining      DateTime?
+  lastLoginAt        DateTime?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  auditLogs          AuditLog[]
+  employee           Employee?
+  notifications      Notification[]
+  createdTasksByUser Task[]         @relation("TaskAssignedByUser")
+}
+
+model Department {
+  id          String     @id @default(uuid())
+  name        String     @unique
+  description String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  employees   Employee[]
+  projects    Project[]
+}
+
+model Employee {
+  id                     String             @id @default(uuid())
+  userId                 String             @unique
+  employeeId             String             @unique
+  fullName               String
+  profilePhoto           String?
+  phone                  String?
+  dateOfJoining          DateTime
+  designation            String
+  departmentId           String
+  managerId              String?
+  employmentStatus       EmploymentStatus   @default(ACTIVE)
+  workModeEligibility    String             @default("WFO,WFH")
+  standardWorkingMinutes Int                @default(480)
+  shift                  String?
+  officeLocation         String?
+  accountStatus          AccountStatus      @default(ACTIVE)
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+  attendance             Attendance[]
+  applicationActivities  ApplicationActivity[]
+  breaks                 BreakSession[]
+  department             Department         @relation(fields: [departmentId], references: [id])
+  manager                Employee?          @relation("EmployeeManager", fields: [managerId], references: [id])
+  reports                Employee[]         @relation("EmployeeManager")
+  user                   User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  idleSessions           IdleSession[]
+  leaveRequests          LeaveRequest[]
+  managedProjects        Project[]          @relation("ProjectManager")
+  assignedTasks          Task[]             @relation("TaskAssignee")
+  taskComments           TaskComment[]
+  taskTimers             TaskTimerSession[]
+  workEvents             WorkEvent[]
+  workSessions           WorkSession[]
+
+  @@index([departmentId])
+  @@index([managerId])
+}
+
+
+model Software {
+  id          String   @id @default(uuid())
+  name        String
+  processName String   @unique
+  description String?
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  applicationActivities ApplicationActivity[]
+
+  @@index([enabled])
+}
+
+model Attendance {
+  id              String           @id @default(uuid())
+  employeeId      String
+  date            DateTime
+  workMode        WorkMode
+  status          AttendanceStatus @default(INCOMPLETE)
+  scheduledStart  DateTime
+  scheduledEnd    DateTime
+  loginTime       DateTime?
+  logoutTime      DateTime?
+  requiredMinutes Int
+  loggedInMinutes Int              @default(0)
+  activeMinutes   Int              @default(0)
+  idleMinutes     Int              @default(0)
+  breakMinutes    Int              @default(0)
+  taskMinutes     Int              @default(0)
+  shortageMinutes Int              @default(0)
+  overtimeMinutes Int              @default(0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  employee        Employee         @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  breaks          BreakSession[]
+  idleSessions    IdleSession[]
+  workEvents      WorkEvent[]
+  workSessions    WorkSession[]
+  applicationActivities ApplicationActivity[]
+
+  @@unique([employeeId, date])
+  @@index([date])
+  @@index([status])
+}
+
+model WorkSession {
+  id           String     @id @default(uuid())
+  employeeId   String
+  attendanceId String
+  startedAt    DateTime
+  endedAt      DateTime?
+  attendance   Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+  employee     Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@index([employeeId, startedAt])
+}
+
+
+model BreakType {
+  id               String         @id @default(uuid())
+  name             String         @unique
+  description      String?
+  timeLimitMinutes Int
+  enabled          Boolean        @default(true)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  breakSessions BreakSession[]
+
+  @@index([enabled])
+}
+
+model BreakSession {
+  id           String     @id @default(uuid())
+  employeeId   String
+  attendanceId String
+  breakTypeId  String
+  startedAt    DateTime
+  endedAt      DateTime?
+
+  attendance Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+  employee   Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  breakType  BreakType  @relation(fields: [breakTypeId], references: [id], onDelete: Restrict)
+
+  @@index([employeeId, startedAt])
+  @@index([breakTypeId])
+}
+
+model IdleSession {
+  id           String     @id @default(uuid())
+  employeeId   String
+  attendanceId String
+  startedAt    DateTime
+  endedAt      DateTime?
+  attendance   Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+  employee     Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@index([employeeId, startedAt])
+}
+
+
+model ApplicationActivity {
+  id             String     @id @default(uuid())
+  employeeId     String
+  attendanceId   String
+  softwareId     String
+  startedAt      DateTime
+  endedAt        DateTime?
+  lastActivityAt DateTime?
+
+  employee   Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  attendance Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+  software   Software   @relation(fields: [softwareId], references: [id], onDelete: Restrict)
+
+  @@index([employeeId, startedAt])
+  @@index([attendanceId, startedAt])
+  @@index([softwareId, startedAt])
+}
+
+model WorkEvent {
+  id           String     @id @default(uuid())
+  employeeId   String
+  attendanceId String
+  type         EventType
+  occurredAt   DateTime   @default(now())
+  metadata     Json?
+  attendance   Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+  employee     Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@index([employeeId, occurredAt])
+}
+
+model Project {
+  id           String        @id @default(uuid())
+  name         String        @unique
+  description  String?
+  status       ProjectStatus @default(ACTIVE)
+  startDate    DateTime?
+  endDate      DateTime?
+  managerId    String
+  departmentId String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  department   Department?   @relation(fields: [departmentId], references: [id])
+  manager      Employee      @relation("ProjectManager", fields: [managerId], references: [id])
+  tasks        Task[]
+}
+
+model Task {
+  id               String             @id @default(uuid())
+  taskNumber       String             @unique
+  title            String
+  description      String?
+  projectId        String?
+  assignedToId     String
+  assignedById     String?
+  priority         TaskPriority       @default(MEDIUM)
+  status           TaskStatus         @default(TODO)
+  startDate        DateTime?
+  dueDate          DateTime?
+  estimatedMinutes Int?
+  actualMinutes    Int                @default(0)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  completedAt      DateTime?
+  assignedByUserId String?
+  assignedByUser   User?              @relation("TaskAssignedByUser", fields: [assignedByUserId], references: [id])
+  assignedTo       Employee           @relation("TaskAssignee", fields: [assignedToId], references: [id])
+  project          Project?           @relation(fields: [projectId], references: [id])
+  comments         TaskComment[]
+  timers           TaskTimerSession[]
+
+  @@index([assignedToId, status])
+  @@index([assignedByUserId])
+  @@index([projectId])
+}
+
+model TaskTimerSession {
+  id         String    @id @default(uuid())
+  taskId     String
+  employeeId String
+  startedAt  DateTime
+  endedAt    DateTime?
+  employee   Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  task       Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@index([employeeId, endedAt])
+}
+
+model TaskComment {
+  id        String   @id @default(uuid())
+  taskId    String
+  authorId  String
+  message   String
+  createdAt DateTime @default(now())
+  author    Employee @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
+
+model LeaveType {
+  id            String         @id @default(uuid())
+  name          String         @unique
+  description   String?
+  leaveRequests LeaveRequest[]
+}
+
+model LeaveRequest {
+  id            String      @id @default(uuid())
+  employeeId    String
+  leaveTypeId   String
+  fromDate      DateTime
+  toDate        DateTime
+  reason        String
+  halfDay       Boolean     @default(false)
+  status        LeaveStatus @default(PENDING)
+  reviewedById  String?
+  reviewedAt    DateTime?
+  reviewComment String?
+  employee      Employee    @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  leaveType     LeaveType   @relation(fields: [leaveTypeId], references: [id])
+
+  @@index([employeeId, fromDate])
+}
+
+model Holiday {
+  id          String   @id @default(uuid())
+  name        String
+  date        DateTime @unique
+  description String?
+}
+
+model Notification {
+  id          String   @id @default(uuid())
+  recipientId String
+  type        String
+  title       String
+  message     String
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  recipient   User     @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+
+  @@index([recipientId, read, createdAt])
+}
+
+model CompanySetting {
+  id                            String   @id @default(uuid())
+  companyName                   String   @default("Employee Work Management System")
+  timezone                      String   @default("Asia/Kolkata")
+  currency                      String   @default("INR")
+  workingDays                   Json
+  startTime                     String   @default("09:30")
+  endTime                       String   @default("18:30")
+  requiredMinutes               Int      @default(480)
+  gracePeriodMinutes            Int      @default(10)
+  breakLimitMinutes             Int      @default(60)
+  breakWarningThresholdMinutes  Int      @default(50)
+  idleThresholdMinutes          Int      @default(5)
+  idleWarningSeconds            Int      @default(60)
+  maximumSessionDurationMinutes Int      @default(720)
+  allowWFH                      Boolean  @default(true)
+  allowWFO                      Boolean  @default(true)
+  updatedAt                     DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  actorId   String?
+  action    String
+  entity    String
+  entityId  String?
+  oldValue  Json?
+  newValue  Json?
+  timestamp DateTime @default(now())
+  ip        String?
+  actor     User?    @relation(fields: [actorId], references: [id])
+
+  @@index([entity, entityId])
+  @@index([timestamp])
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  EMPLOYEE
+}
+
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum EmploymentStatus {
+  ACTIVE
+  ON_LEAVE
+  RESIGNED
+  TERMINATED
+}
+
+enum WorkMode {
+  WFO
+  WFH
+}
+
+enum AttendanceStatus {
+  PRESENT
+  LATE
+  ABSENT
+  ON_LEAVE
+  HOLIDAY
+  WEEKLY_OFF
+  INCOMPLETE
+  EARLY_LOGOUT
+  PRESENT_WITH_INSUFFICIENT_HOURS
+}
+
+enum LiveStatus {
+  ACTIVE
+  IDLE
+  ON_BREAK
+  OFFLINE
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TaskStatus {
+  BACKLOG
+  TODO
+  IN_PROGRESS
+  ON_HOLD
+  REVIEW
+  COMPLETED
+  CANCELLED
+}
+
+enum ProjectStatus {
+  ACTIVE
+  COMPLETED
+  ON_HOLD
+  ARCHIVED
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum EventType {
+  LOGIN
+  LOGOUT
+  BREAK_START
+  BREAK_END
+  IDLE_START
+  IDLE_END
+  TASK_START
+  TASK_PAUSE
+  TASK_RESUME
+  TASK_STOP
+  TASK_COMPLETED
+}

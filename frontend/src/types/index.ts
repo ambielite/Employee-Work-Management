@@ -1,0 +1,13 @@
+export type Role='ADMIN'|'MANAGER'|'EMPLOYEE';
+export type User={id:string;email:string;role:Role;accountStatus?:'ACTIVE'|'INACTIVE';employee?:Employee};
+export type Department={id:string;name:string;description?:string;employees?:Employee[]};
+export type Employee={id:string;employeeId:string;fullName:string;email?:string;phone?:string;designation:string;dateOfJoining?:string;department?:Department;manager?:Employee;employmentStatus?:string;workModeEligibility?:string;standardWorkingMinutes?:number;shift?:string;officeLocation?:string;accountStatus?:string};
+export type Attendance={id:string;date?:string;employee?:Employee;workMode:'WFH'|'WFO';status:string;loginTime?:string;logoutTime?:string;loggedInMinutes:number;activeMinutes:number;idleMinutes:number;breakMinutes:number;taskMinutes:number;requiredMinutes:number;shortageMinutes:number;overtimeMinutes:number;workEvents?:{id?:string;type:string;occurredAt:string}[]};
+export type Task={id:string;taskNumber:string;title:string;description?:string;priority:string;status:string;dueDate?:string;estimatedMinutes?:number;actualMinutes:number;assignedTo?:Employee;assignedBy?:Employee;project?:Project};
+export type Project={id:string;name:string;description?:string;status:string;startDate?:string;endDate?:string;manager?:Employee;department?:Department};
+export type LeaveType={id:string;name:string;description?:string;defaultDays?:number};
+export type LeaveRequest={id:string;employee?:Employee;leaveType?:LeaveType;fromDate:string;toDate:string;reason?:string;status:string;createdAt?:string};
+export type Holiday={id:string;name:string;date:string;description?:string;isOptional?:boolean};
+export type Notification={id:string;title:string;message:string;readAt?:string|null;createdAt:string;type?:string};
+export type CompanySetting={companyName:string;timezone:string;currency:string;workingDays:string[];workingStartTime:string;workingEndTime:string;requiredWorkingMinutes:number;lateGraceMinutes:number;breakLimitMinutes:number;breakWarningMinutes:number;idleThresholdMinutes:number;idleWarningMinutes:number;maxSessionMinutes:number;allowWFH:boolean;allowWFO:boolean};
+export type ApiList<T>={items:T[];total?:number;page?:number;pageSize?:number};

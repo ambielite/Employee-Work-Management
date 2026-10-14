@@ -1,0 +1,4223 @@
+﻿/* =========================================================
+
+   MANAGER TASKS PAGE
+
+   Matches the Manager Dashboard / Manager Leaves visual system
+
+   ========================================================= */
+
+
+
+.managerTasksPage {
+
+    width: 100%;
+
+    min-height: calc(100vh - 52px);
+
+    /* padding: 28px 24px 40px; */
+
+    box-sizing: border-box;
+
+    background: #f5f7fb;
+
+    color: #111827;
+
+    font-family: "Poppins", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+}
+
+
+
+.managerTasksHeader {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+
+}
+
+
+
+.managerTasksHeader h1 {
+
+    margin: 0;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    letter-spacing: -0.45px;
+
+    color: #0f172a;
+
+}
+
+
+
+.managerTasksHeader p {
+
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.managerTasksRefresh {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-width: 103px;
+
+    height: 40px;
+
+    padding: 0 15px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #4f46e5;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.16);
+
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+
+}
+
+
+
+.managerTasksRefresh:hover {
+
+    background: #4338ca;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 16px rgba(79, 70, 229, 0.2);
+
+}
+
+
+
+.managerTasksRefresh:disabled {
+
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+
+/* =========================================================
+
+   MY / TEAM SWITCH
+
+   ========================================================= */
+
+
+
+.managerTaskModeSwitch {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    margin: 0 0 18px auto;
+
+    border: 1px solid #dbe2ee;
+
+    border-radius: 11px;
+
+    background: #fff;
+
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+
+}
+
+
+
+.managerTaskModeSwitch button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    height: 38px;
+
+    min-width: 126px;
+
+    padding: 0 15px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #475569;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.18s ease;
+
+}
+
+
+
+.managerTaskModeSwitch button:hover {
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskModeSwitch button.active {
+
+    background: #4f46e5;
+
+    color: #fff;
+
+    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.2);
+
+}
+
+
+
+/* =========================================================
+
+   ACTIVE TIMER
+
+   ========================================================= */
+
+
+
+.managerActiveTaskTimer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-height: 70px;
+
+    margin-bottom: 18px;
+
+    padding: 12px 17px;
+
+    border: 1px solid #c7d2fe;
+
+    border-left: 4px solid #4f46e5;
+
+    border-radius: 12px;
+
+    background: linear-gradient(90deg, #eef2ff 0%, #fff 62%);
+
+    box-shadow: 0 5px 16px rgba(79, 70, 229, 0.07);
+
+}
+
+
+
+.managerActiveTaskTimerIcon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #e0e7ff;
+
+    color: #4f46e5;
+
+}
+
+
+
+.managerActiveTaskTimerInfo {
+
+    display: flex;
+
+    flex: 1;
+
+    min-width: 0;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+
+.managerActiveTaskTimerInfo span {
+
+    color: #6366f1;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+}
+
+
+
+.managerActiveTaskTimerInfo strong {
+
+    overflow: hidden;
+
+    color: #1e293b;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerActiveTaskTimerClock {
+
+    min-width: 100px;
+
+    text-align: right;
+
+    color: #312e81;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    font-variant-numeric: tabular-nums;
+
+}
+
+
+
+/* =========================================================
+
+   ALERT
+
+   ========================================================= */
+
+
+
+.managerTasksAlert {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+
+    background: #fff1f2;
+
+    color: #b91c1c;
+
+    font-size: 12px;
+
+}
+
+
+
+.managerTasksAlert span {
+
+    flex: 1;
+
+}
+
+
+
+.managerTasksAlert button {
+
+    border: 0;
+
+    background: transparent;
+
+    color: #991b1b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================================================
+
+   SUMMARY CARDS
+
+   ========================================================= */
+
+
+
+.managerTaskSummary {
+
+    display: grid;
+
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+
+}
+
+
+
+.managerTaskSummaryCard {
+
+    min-height: 84px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 14px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 12px;
+
+    background: #fff;
+
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.045);
+
+    box-sizing: border-box;
+
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+}
+
+
+
+.managerTaskSummaryCard:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 17px rgba(15, 23, 42, 0.07);
+
+}
+
+
+
+.managerTaskSummaryIcon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+}
+
+
+
+.managerTaskSummaryIcon.total {
+
+    color: #4f46e5;
+
+    background: #eef2ff;
+
+}
+
+
+
+.managerTaskSummaryIcon.open {
+
+    color: #2563eb;
+
+    background: #eff6ff;
+
+}
+
+
+
+.managerTaskSummaryIcon.progress {
+
+    color: #d97706;
+
+    background: #fff7ed;
+
+}
+
+
+
+.managerTaskSummaryIcon.completed {
+
+    color: #15803d;
+
+    background: #f0fdf4;
+
+}
+
+
+
+.managerTaskSummaryIcon.urgent {
+
+    color: #dc2626;
+
+    background: #fef2f2;
+
+}
+
+
+
+.managerTaskSummaryIcon.actual {
+
+    color: #7c3aed;
+
+    background: #f5f3ff;
+
+}
+
+
+
+.managerTaskSummaryCard>div:last-child {
+
+    min-width: 0;
+
+}
+
+
+
+.managerTaskSummaryCard span {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.25;
+
+}
+
+
+
+.managerTaskSummaryCard strong {
+
+    display: block;
+
+    color: #0f172a;
+
+    font-size: 20px;
+
+    line-height: 1.1;
+
+    font-weight: 700;
+
+}
+
+
+
+/* =========================================================
+
+   FILTER CARD
+
+   ========================================================= */
+
+
+
+.managerTaskFilterCard {
+
+    margin-bottom: 18px;
+
+    padding: 15px 17px 17px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 12px;
+
+    background: #fff;
+
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+
+}
+
+
+
+.managerTaskFilterHeader {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+}
+
+
+
+.managerTaskFilterTitle {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+}
+
+
+
+.managerTaskFilterTitle svg {
+
+    color: #4f46e5;
+
+}
+
+
+
+.managerTaskClear {
+
+    height: 32px;
+
+    padding: 0 12px;
+
+    border: 1px solid #4f46e5;
+
+    border-radius: 7px;
+
+    background: #4f46e5;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+
+}
+
+
+
+.managerTaskClear:hover:not(:disabled) {
+
+    border-color: #111827;
+
+    background: #111827;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskClear:disabled {
+
+    opacity: 0.48;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.managerTaskFilters {
+
+    display: grid;
+
+    grid-template-columns: minmax(260px, 1fr) 190px 190px;
+
+    gap: 10px;
+
+}
+
+
+
+.managerTaskSearch {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    height: 40px;
+
+    border: 1px solid #d7dee9;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+}
+
+
+
+.managerTaskSearch:focus-within {
+
+    border-color: #6366f1;
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.09);
+
+}
+
+
+
+.managerTaskSearch svg {
+
+    flex: 0 0 auto;
+
+    margin-left: 12px;
+
+    color: #64748b;
+
+}
+
+
+
+.managerTaskSearch input {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-width: 0;
+
+    padding: 0 12px 0 9px;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #1e293b;
+
+    font: inherit;
+
+    font-size: 12px;
+
+}
+
+
+
+.managerTaskSearch input::placeholder {
+
+    color: #94a3b8;
+
+}
+
+
+
+.managerTaskDropdown {
+
+    position: relative;
+
+}
+
+
+
+.managerTaskDropdownButton {
+
+    width: 100%;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 0 11px;
+
+    border: 1px solid #d7dee9;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #334155;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+
+}
+
+
+
+.managerTaskDropdownButton:hover,
+
+.managerTaskDropdownButton.open {
+
+    border-color: #6366f1;
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.07);
+
+}
+
+
+
+.managerTaskDropdownButton svg {
+
+    flex: 0 0 auto;
+
+    transition: transform 0.18s ease;
+
+}
+
+
+
+.managerTaskDropdownButton svg.rotate {
+
+    transform: rotate(180deg);
+
+}
+
+
+
+.managerTaskDropdownMenu {
+
+    position: absolute;
+
+    z-index: 30;
+
+    top: calc(100% + 6px);
+
+    left: 0;
+
+    width: 100%;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    padding: 5px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.13);
+
+}
+
+
+
+.managerTaskDropdownMenu button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 9px 10px;
+
+    border: 0;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #334155;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+}
+
+
+
+.managerTaskDropdownMenu button:hover {
+
+    background: #f1f5f9;
+
+}
+
+
+
+.managerTaskDropdownMenu button.selected {
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-weight: 600;
+
+}
+
+
+
+/* =========================================================
+
+   TABLE
+
+   ========================================================= */
+
+
+
+.managerTaskTableCard {
+
+    overflow: hidden;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 13px;
+
+    background: #fff;
+
+    box-shadow: 0 3px 11px rgba(15, 23, 42, 0.045);
+
+}
+
+
+
+.managerTaskTableHeader {
+
+    min-height: 66px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 12px 17px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+}
+
+
+
+.managerTaskTableHeader h2 {
+
+    margin: 0;
+
+    color: #1e293b;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskTableHeader p {
+
+    margin: 3px 0 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+
+.managerTaskPageInfo {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskTableWrap {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+
+.managerTaskTable {
+
+    width: 100%;
+
+    min-width: 1050px;
+
+    border-collapse: collapse;
+
+    table-layout: auto;
+
+}
+
+
+
+.managerTaskTable thead th {
+
+    height: 45px;
+
+    padding: 0 11px;
+
+    border-bottom: 1px solid #dbe2ea;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    text-align: left;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.25px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskTable tbody td {
+
+    min-height: 67px;
+
+    padding: 10px 11px;
+
+    border-bottom: 1px solid #edf1f5;
+
+    color: #475569;
+
+    font-size: 11px;
+
+    vertical-align: middle;
+
+}
+
+
+
+.managerTaskTable tbody tr {
+
+    transition: background 0.15s ease;
+
+}
+
+
+
+.managerTaskTable tbody tr:hover {
+
+    background: #fafbff;
+
+}
+
+
+
+.managerTaskTable tbody tr.activeTaskRow {
+
+    background: #f5f7ff;
+
+}
+
+
+
+.managerTaskTable tbody tr:last-child td {
+
+    border-bottom: 0;
+
+}
+
+
+
+.managerTaskMainCell {
+
+    min-width: 180px;
+
+}
+
+
+
+.managerTaskMainCell strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #3730a3;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskMainCell span {
+
+    display: block;
+
+    max-width: 250px;
+
+    overflow: hidden;
+
+    color: #1e293b;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskMainCell small,
+
+.managerTaskEmployeeCell small {
+
+    display: block;
+
+    max-width: 240px;
+
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskEmployeeCell strong {
+
+    display: block;
+
+    max-width: 160px;
+
+    overflow: hidden;
+
+    color: #334155;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskEmployeeCell small {
+
+    max-width: 160px;
+
+}
+
+
+
+.managerTaskPriority,
+
+.managerTaskStatus {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 23px;
+
+    padding: 0 8px;
+
+    border-radius: 999px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-transform: capitalize;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskPriority.urgent {
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskPriority.high {
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskPriority.medium {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+
+.managerTaskPriority.low {
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+}
+
+
+
+.managerTaskPriority.default {
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+}
+
+
+
+.managerTaskPrioritySelect {
+
+    min-width: 92px;
+
+    min-height: 28px;
+
+    padding: 3px 8px;
+
+    border: 1px solid currentColor;
+
+    border-radius: 999px;
+
+    font: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+
+.managerTaskPrioritySelect.urgent {
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskPrioritySelect.high {
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskPrioritySelect.medium {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+
+.managerTaskPrioritySelect.low {
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+}
+
+
+
+.managerTaskPrioritySelect:disabled {
+
+    opacity: 0.6;
+
+    cursor: wait;
+
+}
+
+
+
+.managerTaskEmployeeManaged {
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+
+.managerTaskStatus.inProgress {
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskStatus.todo {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+
+.managerTaskStatus.backlog {
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+}
+
+
+
+.managerTaskStatus.onHold {
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskStatus.review {
+
+    background: #f5f3ff;
+
+    color: #7c3aed;
+
+}
+
+
+
+.managerTaskStatus.completed {
+
+    background: #f0fdf4;
+
+    color: #15803d;
+
+}
+
+
+
+.managerTaskStatus.cancelled {
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskStatus.default {
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+}
+
+
+
+.managerTaskActual {
+
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 11px;
+
+    font-variant-numeric: tabular-nums;
+
+}
+
+
+
+.managerTaskLive {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #4f46e5;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+}
+
+
+
+.managerTaskActionGroup {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    min-width: 190px;
+
+}
+
+
+
+.managerTaskAction {
+
+    height: 29px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 0 9px;
+
+    border: 1px solid transparent;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: all 0.16s ease;
+
+}
+
+
+
+.managerTaskAction:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.managerTaskAction.primary {
+
+    background: #4f46e5;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskAction.primary:hover:not(:disabled) {
+
+    background: #4338ca;
+
+}
+
+
+
+.managerTaskAction.success {
+
+    background: #15803d;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskAction.success:hover:not(:disabled) {
+
+    background: #166534;
+
+}
+
+
+
+.managerTaskAction.warning {
+
+    background: #fff7ed;
+
+    border-color: #fed7aa;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskAction.warning:hover:not(:disabled) {
+
+    background: #ffedd5;
+
+}
+
+
+
+.managerTaskAction.danger {
+
+    background: #fef2f2;
+
+    border-color: #fecaca;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskAction.danger:hover:not(:disabled) {
+
+    background: #fee2e2;
+
+}
+
+
+
+.managerTaskAction.secondary {
+
+    background: #f8fafc;
+
+    border-color: #dbe2ea;
+
+    color: #475569;
+
+}
+
+
+
+.managerTaskAction.secondary:hover:not(:disabled) {
+
+    background: #eef2ff;
+
+    border-color: #c7d2fe;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskCompletedAction {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    min-height: 29px;
+
+    color: #15803d;
+
+    font-size: 10px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskNoResults {
+
+    height: 180px;
+
+    text-align: center !important;
+
+}
+
+
+
+.managerTaskNoResults svg {
+
+    display: block;
+
+    margin: 0 auto 8px;
+
+    color: #94a3b8;
+
+}
+
+
+
+.managerTaskNoResults strong,
+
+.managerTaskNoResults span {
+
+    display: block;
+
+}
+
+
+
+.managerTaskNoResults strong {
+
+    color: #475569;
+
+    font-size: 13px;
+
+}
+
+
+
+.managerTaskNoResults span {
+
+    margin-top: 3px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+
+   PAGINATION
+
+   ========================================================= */
+
+
+
+.managerTaskPagination {
+
+    min-height: 59px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 10px 16px;
+
+    border-top: 1px solid #e2e8f0;
+
+}
+
+
+
+.managerTaskPagination>span {
+
+    color: #64748b;
+
+    font-size: 10px;
+
+}
+
+
+
+.managerTaskPagination>div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+}
+
+
+
+.managerTaskPagination button {
+
+    min-width: 31px;
+
+    height: 30px;
+
+    padding: 0 8px;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 6px;
+
+    background: #fff;
+
+    color: #475569;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: all 0.15s ease;
+
+}
+
+
+
+.managerTaskPagination button:hover:not(:disabled) {
+
+    border-color: #6366f1;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskPagination button.active {
+
+    border-color: #4f46e5;
+
+    background: #4f46e5;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskPagination button:disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+}
+
+
+
+/* =========================================================
+
+   LOADING / ERROR STATE
+
+   ========================================================= */
+
+
+
+.managerTaskState {
+
+    min-height: 230px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+
+.managerTaskState.error {
+
+    flex-direction: column;
+
+    color: #b91c1c;
+
+}
+
+
+
+.managerTaskState.error button {
+
+    height: 34px;
+
+    padding: 0 13px;
+
+    border: 0;
+
+    border-radius: 7px;
+
+    background: #4f46e5;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+
+/* =========================================================
+
+   TASK DETAILS MODAL
+
+   ========================================================= */
+
+
+
+.managerTaskModalOverlay {
+
+    position: fixed;
+
+    z-index: 1000;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.56);
+
+    backdrop-filter: blur(4px);
+
+}
+
+
+
+.managerTaskModal {
+
+    width: min(760px, 100%);
+
+    max-height: calc(100vh - 40px);
+
+    overflow: hidden;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.22);
+
+    animation: managerTaskModalIn 0.18s ease-out;
+
+}
+
+
+
+@keyframes managerTaskModalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px) scale(0.985);
+
+    }
+
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+
+
+.managerTaskModalHeader {
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 17px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    background: #fff;
+
+}
+
+
+
+.managerTaskModalHeader>div>span {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #6366f1;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+
+}
+
+
+
+.managerTaskModalHeader h2 {
+
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskModalClose {
+
+    width: 36px;
+
+    height: 36px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid #dbe2ea;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: all 0.16s ease;
+
+}
+
+
+
+.managerTaskModalClose:hover {
+
+    border-color: #c7d2fe;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskModalBody {
+
+    max-height: calc(100vh - 190px);
+
+    overflow-y: auto;
+
+    padding: 18px;
+
+}
+
+
+
+.managerTaskModalTitle {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+}
+
+
+
+.managerTaskModalTitle h3 {
+
+    margin: 0;
+
+    color: #1e293b;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskDetailGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+}
+
+
+
+.managerTaskDetailGrid>div {
+
+    min-height: 70px;
+
+    padding: 12px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+}
+
+
+
+.managerTaskDetailGrid span,
+
+.managerTaskDescription>span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.35px;
+
+    text-transform: uppercase;
+
+}
+
+
+
+.managerTaskDetailGrid strong {
+
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+}
+
+
+
+.managerTaskDetailGrid small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+}
+
+
+
+.managerTaskDescription {
+
+    margin-top: 12px;
+
+    padding: 13px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    background: #fff;
+
+}
+
+
+
+.managerTaskDescription p {
+
+    margin: 0;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+    white-space: pre-wrap;
+
+}
+
+
+
+.managerTaskTeamNote {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 12px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #c7d2fe;
+
+    border-radius: 9px;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.managerTaskTeamNote svg {
+
+    flex: 0 0 auto;
+
+    margin-top: 1px;
+
+}
+
+
+
+.managerTaskModalFooter {
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    padding: 10px 17px;
+
+    border-top: 1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+}
+
+
+
+.managerTaskModalFooter button {
+
+    height: 36px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 0 13px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition: all 0.16s ease;
+
+}
+
+
+
+.managerTaskModalSecondary {
+
+    border: 1px solid #dbe2ea;
+
+    background: #fff;
+
+    color: #475569;
+
+}
+
+
+
+.managerTaskModalSecondary:hover {
+
+    background: #f1f5f9;
+
+}
+
+
+
+.managerTaskModalHold {
+
+    border: 1px solid #fed7aa;
+
+    background: #fff7ed;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskModalHold:hover:not(:disabled) {
+
+    background: #ffedd5;
+
+}
+
+
+
+.managerTaskModalPrimary {
+
+    border: 1px solid #4f46e5;
+
+    background: #4f46e5;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskModalPrimary:hover:not(:disabled) {
+
+    background: #4338ca;
+
+}
+
+
+
+.managerTaskModalFooter button:disabled {
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+}
+
+
+
+/* =========================================================
+
+   SPIN
+
+   ========================================================= */
+
+
+
+.managerTaskButtonSpin {
+
+    animation: managerTaskSpin 0.85s linear infinite;
+
+}
+
+
+
+@keyframes managerTaskSpin {
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+
+/* =========================================================
+
+   SCROLLBAR
+
+   ========================================================= */
+
+
+
+.managerTaskDropdownMenu::-webkit-scrollbar,
+
+.managerTaskModalBody::-webkit-scrollbar,
+
+.managerTaskTableWrap::-webkit-scrollbar {
+
+    width: 7px;
+
+    height: 7px;
+
+}
+
+
+
+.managerTaskDropdownMenu::-webkit-scrollbar-track,
+
+.managerTaskModalBody::-webkit-scrollbar-track,
+
+.managerTaskTableWrap::-webkit-scrollbar-track {
+
+    background: #f1f5f9;
+
+}
+
+
+
+.managerTaskDropdownMenu::-webkit-scrollbar-thumb,
+
+.managerTaskModalBody::-webkit-scrollbar-thumb,
+
+.managerTaskTableWrap::-webkit-scrollbar-thumb {
+
+    border-radius: 10px;
+
+    background: #cbd5e1;
+
+}
+
+
+
+/* =========================================================
+
+   RESPONSIVE
+
+   ========================================================= */
+
+
+
+@media (max-width: 1200px) {
+
+    .managerTaskSummary {
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    }
+
+
+
+    .managerTaskFilters {
+
+        grid-template-columns: minmax(220px, 1fr) 180px 180px;
+
+    }
+
+}
+
+
+
+@media (max-width: 900px) {
+
+    .managerTasksPage {
+
+        padding: 22px 16px 32px;
+
+    }
+
+
+
+    .managerTasksHeader {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+    }
+
+
+
+    .managerTasksRefresh {
+
+        align-self: flex-start;
+
+    }
+
+
+
+    .managerTaskModeSwitch {
+
+        width: 100%;
+
+        margin-left: 0;
+
+    }
+
+
+
+    .managerTaskModeSwitch button {
+
+        flex: 1;
+
+    }
+
+
+
+    .managerTaskFilters {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+
+    .managerTaskSearch {
+
+        grid-column: 1 / -1;
+
+    }
+
+}
+
+
+
+@media (max-width: 640px) {
+
+    .managerTasksPage {
+
+        padding: 18px 11px 28px;
+
+    }
+
+
+
+    .managerTasksHeader h1 {
+
+        font-size: 23px;
+
+    }
+
+
+
+    .managerTaskSummary {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+
+    }
+
+
+
+    .managerTaskSummaryCard {
+
+        min-height: 76px;
+
+        padding: 11px;
+
+    }
+
+
+
+    .managerTaskSummaryIcon {
+
+        width: 34px;
+
+        height: 34px;
+
+        flex-basis: 34px;
+
+    }
+
+
+
+    .managerTaskSummaryCard strong {
+
+        font-size: 17px;
+
+    }
+
+
+
+    .managerTaskFilters {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .managerTaskSearch {
+
+        grid-column: auto;
+
+    }
+
+
+
+    .managerTaskFilterHeader,
+
+    .managerTaskTableHeader,
+
+    .managerTaskPagination {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+
+    .managerTaskPagination {
+
+        gap: 10px;
+
+    }
+
+
+
+    .managerTaskPagination>div {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        padding-bottom: 2px;
+
+    }
+
+
+
+    .managerActiveTaskTimer {
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+    }
+
+
+
+    .managerActiveTaskTimerClock {
+
+        width: 100%;
+
+        min-width: 0;
+
+        text-align: left;
+
+    }
+
+
+
+    .managerTaskDetailGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .managerTaskModalOverlay {
+
+        padding: 10px;
+
+    }
+
+
+
+    .managerTaskModal {
+
+        max-height: calc(100vh - 20px);
+
+        border-radius: 12px;
+
+    }
+
+
+
+    .managerTaskModalBody {
+
+        max-height: calc(100vh - 170px);
+
+    }
+
+
+
+    .managerTaskModalFooter {
+
+        flex-wrap: wrap;
+
+    }
+
+
+
+    .managerTaskModalFooter button {
+
+        flex: 1;
+
+    }
+
+}
+
+
+
+/* =========================================================
+
+   FINAL TASK INTERACTION / MODAL ACTIONS
+
+   ========================================================= */
+
+
+
+.managerTasksHeaderActions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    flex-wrap: nowrap;
+
+}
+
+
+
+/* Keep My Tasks / Team Tasks beside Refresh in the header. */
+
+.managerTaskModeSwitch {
+
+    margin: 0;
+
+    flex: 0 0 auto;
+
+}
+
+
+
+.managerTasksRefresh {
+
+    flex: 0 0 auto;
+
+}
+
+
+
+/* Clickable task rows. */
+
+.managerTaskTable tbody tr.managerTaskRow {
+
+    cursor: pointer;
+
+    transition: background-color 0.16s ease, box-shadow 0.16s ease;
+
+}
+
+
+
+.managerTaskTable tbody tr.managerTaskRow:hover,
+
+.managerTaskTable tbody tr.managerTaskRow:hover td {
+
+    background: #f5f7ff !important;
+
+}
+
+
+
+.managerTaskTable tbody tr.managerTaskRow:focus-visible {
+
+    outline: 2px solid #4f46e5;
+
+    outline-offset: -2px;
+
+    background: #f5f7ff;
+
+}
+
+
+
+.managerTaskTable tbody tr.managerTaskRow\.activeTaskRow,
+
+.managerTaskTable tbody tr.managerTaskRow\.activeTaskRow td {
+
+    background: #eef2ff;
+
+}
+
+
+
+.managerTaskActionsCell {
+
+    position: relative;
+
+    z-index: 2;
+
+    cursor: default;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskActionsCell button {
+
+    position: relative;
+
+    z-index: 3;
+
+}
+
+
+
+/* Modal action layout. */
+
+.managerTaskModalFooter {
+
+    min-height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 12px 18px;
+
+    border-top: 1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+}
+
+
+
+.managerTaskModalActionGroup {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+}
+
+
+
+.managerTaskModalAction {
+
+    min-width: 92px;
+
+    height: 38px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 14px;
+
+    border: 1px solid transparent;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.16s ease, border-color 0.16s ease,
+
+        color 0.16s ease, transform 0.12s ease, box-shadow 0.16s ease;
+
+}
+
+
+
+.managerTaskModalAction:hover:not(:disabled) {
+
+    transform: translateY(-1px);
+
+}
+
+
+
+.managerTaskModalAction:active:not(:disabled) {
+
+    transform: translateY(0);
+
+}
+
+
+
+.managerTaskModalAction:disabled {
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+
+.managerTaskModalAction.start {
+
+    background: #4f46e5;
+
+    border-color: #4f46e5;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskModalAction.start:hover:not(:disabled) {
+
+    background: #4338ca;
+
+    border-color: #4338ca;
+
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.22);
+
+}
+
+
+
+.managerTaskModalAction.pause {
+
+    background: #fff7ed;
+
+    border-color: #fed7aa;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskModalAction.pause:hover:not(:disabled) {
+
+    background: #ffedd5;
+
+    border-color: #fdba74;
+
+}
+
+
+
+.managerTaskModalAction.stop {
+
+    background: #fef2f2;
+
+    border-color: #fecaca;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskModalAction.stop:hover:not(:disabled) {
+
+    background: #fee2e2;
+
+    border-color: #fca5a5;
+
+}
+
+
+
+.managerTaskModalAction.complete {
+
+    background: #15803d;
+
+    border-color: #15803d;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskModalAction.complete:hover:not(:disabled) {
+
+    background: #166534;
+
+    border-color: #166534;
+
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.2);
+
+}
+
+
+
+.managerTaskModalFooter .managerTaskCompletedAction {
+
+    min-height: 38px;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+    .managerTasksHeader {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .managerTasksHeaderActions {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+}
+
+
+
+@media (max-width: 640px) {
+
+    .managerTasksHeaderActions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .managerTaskModeSwitch {
+
+        width: 100%;
+
+    }
+
+
+
+    .managerTaskModeSwitch button {
+
+        flex: 1;
+
+        min-width: 0;
+
+    }
+
+
+
+    .managerTasksRefresh {
+
+        width: 100%;
+
+    }
+
+
+
+    .managerTaskModalFooter {
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .managerTaskModalActionGroup {
+
+        width: 100%;
+
+    }
+
+
+
+    .managerTaskModalActionGroup .managerTaskModalAction {
+
+        flex: 1;
+
+    }
+
+
+
+    .managerTaskModalSecondary {
+
+        width: 100%;
+
+    }
+
+}
+
+
+
+/* =========================================================
+
+   FINAL TASK ACTION / CARD UI OVERRIDES
+
+   ========================================================= */
+
+
+
+/* Summary cards: required colored top borders. */
+
+.managerTaskSummaryCard {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-top-width: 3px;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.total) {
+
+    border-top-color: #4f46e5;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.open) {
+
+    border-top-color: #2563eb;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.progress) {
+
+    border-top-color: #d97706;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.completed) {
+
+    border-top-color: #15803d;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.urgent) {
+
+    border-top-color: #dc2626;
+
+}
+
+
+
+.managerTaskSummaryCard:has(.managerTaskSummaryIcon.actual) {
+
+    border-top-color: #7c3aed;
+
+}
+
+
+
+/* Keep all row actions on one horizontal line. */
+
+.managerTaskActionGroup {
+
+    display: inline-flex !important;
+
+    flex-wrap: nowrap !important;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 6px;
+
+    min-width: max-content;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskAction {
+
+    flex: 0 0 auto;
+
+    min-width: 76px;
+
+    height: 31px;
+
+    padding: 0 10px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskAction.primary {
+
+    background: #4f46e5;
+
+    border-color: #4f46e5;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskAction.primary:hover:not(:disabled) {
+
+    background: #4338ca;
+
+    border-color: #4338ca;
+
+}
+
+
+
+.managerTaskAction.warning {
+
+    background: #fff7ed;
+
+    border-color: #fed7aa;
+
+    color: #c2410c;
+
+}
+
+
+
+.managerTaskAction.warning:hover:not(:disabled) {
+
+    background: #ffedd5;
+
+    border-color: #fdba74;
+
+}
+
+
+
+.managerTaskAction.danger {
+
+    background: #fef2f2;
+
+    border-color: #fecaca;
+
+    color: #dc2626;
+
+}
+
+
+
+.managerTaskAction.danger:hover:not(:disabled) {
+
+    background: #fee2e2;
+
+    border-color: #fca5a5;
+
+}
+
+
+
+.managerTaskAction.success {
+
+    background: #15803d;
+
+    border-color: #15803d;
+
+    color: #fff;
+
+}
+
+
+
+.managerTaskAction.success:hover:not(:disabled) {
+
+    background: #166534;
+
+    border-color: #166534;
+
+}
+
+
+
+.managerTaskActionsCell {
+
+    min-width: 250px;
+
+    white-space: nowrap !important;
+
+    vertical-align: middle;
+
+}
+
+
+
+/* Modal actions: always horizontal too. */
+
+.managerTaskModalActionGroup {
+
+    display: inline-flex !important;
+
+    flex-wrap: nowrap !important;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    min-width: max-content;
+
+}
+
+
+
+.managerTaskModalAction {
+
+    flex: 0 0 auto;
+
+    min-width: 94px;
+
+    white-space: nowrap;
+
+}
+
+
+
+.managerTaskModalFooter {
+
+    overflow-x: auto;
+
+}
+
+
+
+/* On small screens the table can scroll horizontally, but action buttons
+
+   still stay together rather than wrapping into two rows. */
+
+@media (max-width: 900px) {
+
+    .managerTaskActionsCell {
+
+        min-width: 250px;
+
+    }
+
+
+
+    .managerTaskModalFooter {
+
+        overflow-x: auto;
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+
+   CREATE / ASSIGN TASK
+
+   ========================================================= */
+
+
+
+.managerTasksHeaderActions {
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.managerTasksCreateButton {
+
+    min-height: 40px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 15px;
+
+    border: 1px solid #4338ca;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: #4338ca;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.08);
+
+    transition: transform 0.16s ease, background 0.16s ease,
+
+        color 0.16s ease, box-shadow 0.16s ease;
+
+}
+
+
+
+.managerTasksCreateButton:hover {
+
+    transform: translateY(-1px);
+
+    background: #eef2ff;
+
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.14);
+
+}
+
+
+
+.managerTasksCreateButton:focus-visible {
+
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+
+    outline-offset: 2px;
+
+}
+
+
+
+.managerTaskCreateModal {
+
+    width: min(760px, 100%);
+
+}
+
+
+
+.managerTaskCreateBody {
+
+    padding: 18px;
+
+}
+
+
+
+.managerTaskCreateIntro {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    padding: 13px 14px;
+
+    border: 1px solid #c7d2fe;
+
+    border-radius: 11px;
+
+    background: linear-gradient(100deg, #eef2ff 0%, #ffffff 100%);
+
+}
+
+
+
+.managerTaskCreateIntroIcon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #e0e7ff;
+
+    color: #4338ca;
+
+}
+
+
+
+.managerTaskCreateIntro strong {
+
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskCreateIntro p {
+
+    margin: 3px 0 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.managerTaskCreateGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+
+}
+
+
+
+.managerTaskFormField {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+
+.managerTaskFormField.full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+
+.managerTaskFormField>span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #334155;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskFormField>span svg {
+
+    color: #6366f1;
+
+}
+
+
+
+.managerTaskFormField>span b {
+
+    color: #dc2626;
+
+    font-weight: 700;
+
+}
+
+
+
+.managerTaskFormField>span small {
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+}
+
+
+
+.managerTaskFormField input,
+
+.managerTaskFormField select,
+
+.managerTaskFormField textarea {
+
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d7dee9;
+
+    border-radius: 8px;
+
+    outline: 0;
+
+    background: #fff;
+
+    color: #1e293b;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+
+}
+
+
+
+.managerTaskFormField input,
+
+.managerTaskFormField select {
+
+    height: 41px;
+
+    padding: 0 11px;
+
+}
+
+
+
+.managerTaskFormField textarea {
+
+    min-height: 82px;
+
+    padding: 10px 11px;
+
+    line-height: 1.55;
+
+    resize: vertical;
+
+}
+
+
+
+.managerTaskFormField input::placeholder,
+
+.managerTaskFormField textarea::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+
+.managerTaskFormField input:focus,
+
+.managerTaskFormField select:focus,
+
+.managerTaskFormField textarea:focus {
+
+    border-color: #6366f1;
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+
+}
+
+
+
+.managerTaskFormField input:disabled,
+
+.managerTaskFormField select:disabled,
+
+.managerTaskFormField textarea:disabled {
+
+    background: #f8fafc;
+
+    color: #94a3b8;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.managerTaskFormField>small {
+
+    color: #b45309;
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+}
+
+
+
+.managerTaskCreateMessage {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+
+    padding: 10px 12px;
+
+    border: 1px solid;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+
+.managerTaskCreateMessage svg {
+
+    flex: 0 0 auto;
+
+    margin-top: 1px;
+
+}
+
+
+
+.managerTaskCreateMessage.error {
+
+    border-color: #fecaca;
+
+    background: #fff1f2;
+
+    color: #b91c1c;
+
+}
+
+
+
+.managerTaskCreateMessage.success {
+
+    border-color: #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #166534;
+
+}
+
+
+
+.managerTaskCreateFooter {
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+}
+
+
+
+.managerTaskCreateFooter .managerTaskModalPrimary {
+
+    min-width: 145px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+}
+
+
+
+.managerTaskCreateFooter .managerTaskModalSecondary {
+
+    min-width: 95px;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+    .managerTasksHeaderActions {
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+    }
+
+
+
+    .managerTasksCreateButton,
+
+    .managerTasksRefresh {
+
+        width: auto;
+
+    }
+
+}
+
+
+
+@media (max-width: 640px) {
+
+    .managerTasksHeaderActions {
+
+        align-items: stretch;
+
+    }
+
+
+
+    .managerTasksCreateButton,
+
+    .managerTasksRefresh {
+
+        width: 100%;
+
+    }
+
+
+
+    .managerTaskCreateGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+
+    .managerTaskFormField.full {
+
+        grid-column: auto;
+
+    }
+
+
+
+    .managerTaskCreateFooter {
+
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .managerTaskCreateFooter button {
+
+        width: 100%;
+
+    }
+
+}
+
+
+
+/* Manager task table refinements: clear status controls and consistent buttons. */
+
+.managerTaskStatusSelect {
+
+    min-width: 112px;
+
+    max-width: 145px;
+
+    height: 32px;
+
+    padding: 0 26px 0 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background-color: #eff6ff;
+
+    color: #1d4ed8;
+
+    font: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+
+}
+
+
+
+.managerTaskStatusSelect:hover:not(:disabled) {
+
+    background-color: #111827;
+
+    color: #fff;
+
+    border-color: #111827;
+
+}
+
+
+
+.managerTaskStatusSelect:focus-visible {
+
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, .18);
+
+}
+
+
+
+.managerTaskStatusSelect:disabled {
+
+    opacity: .65;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.managerTasksPage button:not(:disabled) {
+
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+
+}
+
+
+
+.managerTasksPage .managerTasksCreateButton,
+
+.managerTasksPage .managerTasksRefresh {
+
+    background: #2563eb;
+
+    color: #fff;
+
+    border-color: #2563eb;
+
+}
+
+
+
+.managerTasksPage .managerTasksCreateButton:hover:not(:disabled),
+
+.managerTasksPage .managerTasksRefresh:hover:not(:disabled) {
+
+    background: #111827;
+
+    color: #fff;
+
+    border-color: #111827;
+
+}
+
+
+
+.managerTaskAssignedByCell {
+
+    min-width: 145px;
+
+}
+
+
+
+.managerTaskAssignedByCell strong {
+
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+}
+
+
+
+.managerTaskAssignedByCell small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    line-height: 1.35;
+
+}
+
+
+
+.managerTaskTable tbody tr {
+
+    transition: background-color .16s ease;
+
+}
+
+
+
+.managerTaskTable tbody tr:hover {
+
+    background: #f8fafc;
+
+}
+
+
+
+.managerTaskTable td {
+
+    vertical-align: middle;
+
+}
+
+
+
+.managerTaskTable .managerTaskPrioritySelect {
+
+    min-width: 100px;
+
+}
+
+
+
+.managerTaskStatusSelect,
+
+.managerTaskStatusSelect:hover,
+
+.managerTaskStatusSelect:focus,
+
+.managerTaskStatusSelect:active {
+
+    color: #2563eb !important;
+
+    background-color: #fff !important;
+
+    border-color: #2563eb !important;
+
+    box-shadow: none !important;
+
+    outline: none;
+
+}
+
+
+
+.managerTaskStatusSelect option {
+
+    color: #2563eb;
+
+    background-color: #fff;
+
+}
+
+/* Keep the manager's own task table within the available page width. */
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable {
+    width: 100%;
+    min-width: 1000px;
+    table-layout: fixed;
+}
+
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th,
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(1),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(1) { width: 13%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(2),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(2) { width: 14%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(3),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(3) { width: 8%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(4),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(4) { width: 7%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(5),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(5) { width: 12%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(6),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(6) { width: 7%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(7),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(7) { width: 7%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(8),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(8) { width: 7%; }
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable th:nth-child(9),
+.managerTasksPage[data-view-mode="OWN"] .managerTaskTable td:nth-child(9) { width: 25%; }
+
+.managerTasksPage[data-view-mode="OWN"] .managerTaskActionGroup {
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.managerTasksPage[data-view-mode="OWN"] .managerTaskAction {
+    min-width: 0;
+    padding: 0 6px;
+    font-size: 9px;
+}
+
+.managerTasksPage[data-view-mode="OWN"] .managerTaskStatusSelect {
+    min-width: 0;
+    width: 100%;
+}

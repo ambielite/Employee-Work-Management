@@ -1,0 +1,755 @@
+/* =========================================================
+   EMPLOYEE WORK MANAGEMENT SYSTEM
+   SHARED TABLE SYSTEM
+   File: frontend/src/shared-table.css
+
+   Used by:
+   - DataTable.tsx
+   - FilterBar.tsx
+   - Shared data tables
+   - Search / filters
+   - Sorting
+   - Pagination
+   - Status badges
+   ========================================================= */
+
+
+/* =========================================================
+   1. FILTER BAR
+   ========================================================= */
+
+.filterBar {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   2. SEARCH BOX
+   ========================================================= */
+
+.searchBox {
+    height: 40px;
+    min-width: 240px;
+    max-width: 360px;
+
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0 11px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    color: var(--color-text-muted);
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.searchBox:hover {
+    border-color: var(--color-border-dark);
+}
+
+.searchBox:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+.searchBox svg {
+    flex-shrink: 0;
+}
+
+.searchBox input {
+    width: 100%;
+    min-width: 0;
+
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: var(--color-text);
+
+    font-size: 14px;
+}
+
+.searchBox input::placeholder {
+    color: var(--color-text-subtle);
+}
+
+
+/* =========================================================
+   3. FILTER FIELD
+   ========================================================= */
+
+.filterField {
+    min-width: 150px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filterField span {
+    color: var(--color-text-muted);
+
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+}
+
+.filterField select {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 34px 0 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    font-size: 14px;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.filterField select:hover {
+    border-color: var(--color-border-dark);
+}
+
+.filterField select:focus {
+    outline: none;
+
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+
+/* =========================================================
+   4. FILTER RESET
+   ========================================================= */
+
+.filterReset {
+    height: 40px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   5. TABLE CONTAINER
+   ========================================================= */
+
+.dataTableWrap {
+    width: 100%;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-neutral);
+    border-radius: var(--radius-xl);
+
+    overflow: hidden;
+}
+
+.tableScroll {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   6. TABLE
+   ========================================================= */
+
+.dataTable {
+    width: 100%;
+    min-width: max-content;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.dataTable th,
+.dataTable td {
+    padding: 12px;
+
+    border-bottom: 1px solid var(--color-border-light);
+
+    text-align: left;
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.dataTable th {
+    background: var(--color-surface);
+
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+}
+
+.dataTable td {
+    background: var(--color-surface);
+
+    color: var(--color-text-secondary);
+
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.dataTable tbody tr {
+    transition: background var(--transition-fast);
+}
+
+.dataTable tbody tr:hover td {
+    background: var(--color-bg-subtle);
+}
+
+.dataTable tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   7. SORT BUTTON
+   ========================================================= */
+
+.sortButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 2px 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+
+    text-transform: uppercase;
+    letter-spacing: 0.25px;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast);
+}
+
+.sortButton:hover {
+    color: var(--color-text);
+}
+
+.sortButton:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.sortButton svg {
+    width: 15px;
+    height: 15px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   8. TABLE STATE
+   ========================================================= */
+
+.tableState {
+    width: 100%;
+
+    padding: 26px 20px;
+
+    background: var(--color-surface);
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+    text-align: center;
+}
+
+.dataTableWrap>.tableState {
+    border-top: 1px solid var(--color-border-light);
+}
+
+
+/* =========================================================
+   9. PAGINATION
+   ========================================================= */
+
+.pagination {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 12px 14px;
+
+    border-top: 1px solid var(--color-border-light);
+
+    background: var(--color-surface);
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+.pagination b {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.paginationButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   10. PAGINATION BUTTON
+   ========================================================= */
+
+.iconBtn {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.iconBtn:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+
+.iconBtn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.iconBtn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   11. STATUS BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 24px;
+
+    padding: 4px 9px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+
+    background: #eef2f7;
+    color: #475569;
+
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* ---------- Success ---------- */
+
+.badge.good {
+    background: #dcfce7;
+    border-color: #bbf7d0;
+    color: #166534;
+}
+
+
+/* ---------- Warning ---------- */
+
+.badge.warn {
+    background: #fef3c7;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+
+/* ---------- Danger ---------- */
+
+.badge.bad {
+    background: #fee2e2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+
+/* ---------- Neutral ---------- */
+
+.badge.neutral {
+    background: #eef2f7;
+    border-color: #e2e8f0;
+    color: #475569;
+}
+
+
+/* =========================================================
+   12. TABLE TEXT HELPERS
+   ========================================================= */
+
+.dataTable .primaryText {
+    color: var(--color-text);
+
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.dataTable .secondaryText {
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+}
+
+.dataTable .subtleText {
+    color: var(--color-text-subtle);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   13. TABLE EMPTY / NO DATA
+   ========================================================= */
+
+.tableEmpty {
+    min-height: 160px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    color: var(--color-text-muted);
+
+    text-align: center;
+}
+
+.tableEmptyIcon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background: var(--color-bg-muted);
+    color: var(--color-text-muted);
+}
+
+.tableEmptyTitle {
+    margin: 0 0 4px;
+
+    color: var(--color-text);
+
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.tableEmptyText {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   14. TABLE LOADING
+   ========================================================= */
+
+.tableLoading {
+    min-height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+.tableLoadingSpinner {
+    width: 18px;
+    height: 18px;
+
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-primary);
+
+    border-radius: 50%;
+
+    animation: tableSpin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   15. TABLE ACTIONS
+   ========================================================= */
+
+.tableActions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tableActionBtn {
+    width: 32px;
+    height: 32px;
+
+    display: inline-grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.tableActionBtn:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+
+.tableActionBtn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.tableActionBtn.danger {
+    color: var(--color-danger);
+}
+
+.tableActionBtn.danger:hover:not(:disabled) {
+    background: var(--color-danger-soft);
+    border-color: var(--color-danger-border);
+}
+
+.tableActionBtn.success {
+    color: var(--color-success);
+}
+
+.tableActionBtn.success:hover:not(:disabled) {
+    background: var(--color-success-soft);
+    border-color: var(--color-success-border);
+}
+
+
+/* =========================================================
+   16. RESPONSIVE FILTERS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .filterBar {
+        align-items: stretch;
+    }
+
+    .searchBox {
+        max-width: none;
+    }
+
+    .filterField {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   17. RESPONSIVE TABLE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .dataTableWrap {
+        border-radius: var(--radius-lg);
+    }
+
+    .dataTable th,
+    .dataTable td {
+        padding: 10px;
+    }
+
+    .dataTable th {
+        font-size: 11px;
+    }
+
+    .dataTable td {
+        font-size: 13px;
+    }
+
+    .pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .paginationButtons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+
+/* =========================================================
+   18. SMALL MOBILE FILTERS
+   ========================================================= */
+
+@media (max-width: 600px) {
+    .filterBar {
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .searchBox {
+        width: 100%;
+        min-width: 100%;
+        max-width: none;
+    }
+
+    .filterField {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .filterField select {
+        width: 100%;
+    }
+
+    .filterReset {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   19. VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .dataTable th,
+    .dataTable td {
+        padding: 9px;
+    }
+
+    .pagination {
+        padding: 11px;
+    }
+}
+
+
+/* =========================================================
+   20. ANIMATION
+   ========================================================= */
+
+@keyframes tableSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   21. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .tableLoadingSpinner {
+        animation: none;
+    }
+
+    .dataTable tbody tr,
+    .sortButton,
+    .iconBtn,
+    .tableActionBtn,
+    .searchBox,
+    .filterField select {
+        transition: none;
+    }
+}

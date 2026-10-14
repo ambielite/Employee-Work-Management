@@ -1,0 +1,772 @@
+/* =========================================================
+   MANAGER TEAM PAGE
+========================================================= */
+
+
+/* =========================================================
+   FILTER CARD
+========================================================= */
+
+.managerTeamFilterCard {
+    width: 100%;
+    box-sizing: border-box;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   FILTER HEADER
+========================================================= */
+
+.managerTeamFilterCard .employeeFilterHeader {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    box-sizing: border-box;
+}
+
+.managerTeamFilterCard .adminTasksFilterTitle {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #111827;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.managerTeamFilterCard .adminTasksFilterTitle svg {
+    color: #4f46e5;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CLEAR FILTERS
+========================================================= */
+
+.managerTeamFilterCard .employeeClearBtn {
+    flex: 0 0 auto;
+
+    min-width: 106px;
+    height: 40px;
+
+    padding: 0 16px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+/* =========================================================
+   FILTER ROW
+========================================================= */
+
+.managerTeamFilterCard .employeeFilter {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr) minmax(190px, 1fr) minmax(190px, 1fr);
+
+    gap: 12px;
+
+    margin-top: 12px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.managerTeamFilterCard .employeeSearch {
+    width: 100%;
+    min-width: 0;
+
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    /* padding: 0 12px; */
+
+    box-sizing: border-box;
+
+    border: 1px solid #d8deea;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #94a3b8;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.managerTeamFilterCard .employeeSearch:focus-within {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+.managerTeamFilterCard .employeeSearch svg {
+    flex: 0 0 auto;
+
+    color: #94a3b8;
+}
+
+.managerTeamFilterCard .employeeSearch input {
+    width: 100%;
+    min-width: 0;
+
+    height: 100%;
+
+    /* padding: 0; */
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #111827;
+
+    font-family: inherit;
+
+    font-size: 12px;
+}
+
+.managerTeamFilterCard .employeeSearch input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.managerTeamFilterCard .employeeFilter select {
+    width: 100%;
+    min-width: 0;
+
+    height: 40px;
+
+    padding: 0 36px 0 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d8deea;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    background-color: #ffffff;
+
+    color: #111827;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.managerTeamFilterCard .employeeFilter select:hover {
+    border-color: #c4cad6;
+}
+
+.managerTeamFilterCard .employeeFilter select:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.managerTeamTableCard {
+    width: 100%;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.managerTeamTableWrap {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #cbd5e1 transparent;
+}
+
+.managerTeamTableWrap::-webkit-scrollbar {
+    height: 7px;
+}
+
+.managerTeamTableWrap::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.managerTeamTableWrap::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 999px;
+}
+
+.managerTeamTableWrap::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.managerTeamTable {
+    width: 100%;
+
+    min-width: 1050px;
+
+    table-layout: auto;
+}
+
+.managerTeamTable thead th {
+    white-space: nowrap;
+
+    vertical-align: middle;
+}
+
+.managerTeamTable tbody td {
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   EMPLOYEE COLUMN
+========================================================= */
+
+.managerTeamEmployeeColumn {
+    width: 210px;
+
+    min-width: 210px;
+}
+
+.managerTeamEmployeeCell {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+}
+
+.managerTeamEmployeeText {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.managerTeamEmployeeText strong {
+    display: block;
+
+    max-width: 155px;
+
+    overflow: hidden;
+
+    color: #111827;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.managerTeamEmployeeText span {
+    display: block;
+
+    max-width: 155px;
+
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   EMPLOYEE AVATAR
+========================================================= */
+
+.managerTeamEmployeeCell .employeeAvatar {
+    flex: 0 0 36px;
+
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE CELLS
+========================================================= */
+
+.managerTeamTable td {
+    white-space: nowrap;
+}
+
+.nowrapCell {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   EMAIL
+========================================================= */
+
+.managerTeamEmailCell {
+    max-width: 210px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   DESIGNATION
+========================================================= */
+
+.managerTeamDesignationCell {
+    max-width: 170px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.managerTeamActionColumn {
+    width: 70px;
+
+    min-width: 70px;
+
+    text-align: center;
+}
+
+.managerTeamActions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+}
+
+.managerTeamActions .iconActionBtn {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.managerTeamActions .iconActionBtn:hover {
+    background: #eef2ff;
+
+    border-color: #c7d2fe;
+
+    color: #4f46e5;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ROW HOVER
+========================================================= */
+
+.managerTeamRow {
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease;
+}
+
+.managerTeamRow:hover {
+    background: #f8fafc;
+}
+
+.managerTeamRow:focus-visible {
+    outline: 2px solid #6366f1;
+
+    outline-offset: -2px;
+
+    background: #f8fafc;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.managerTeamPagination {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px 16px;
+
+    box-sizing: border-box;
+
+    border-top: 1px solid #edf0f4;
+
+    background: #ffffff;
+}
+
+.managerTeamPagination .employeePaginationInfo {
+    color: #64748b;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+.managerTeamPagination .employeePaginationInfo strong {
+    color: #334155;
+
+    font-weight: 700;
+}
+
+.managerTeamPagination .employeePaginationControls {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.managerTeamPagination .paginationBtn {
+    min-width: 68px;
+
+    height: 32px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 10px;
+
+    border: 1px solid #d9dee7;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.managerTeamPagination .paginationBtn:hover:not(:disabled) {
+    background: #4f46e5;
+
+    border-color: #4f46e5;
+
+    color: #ffffff;
+}
+
+.managerTeamPagination .paginationBtn:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+.managerTeamPagination .paginationCurrent {
+    min-width: 82px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #475569;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+    .managerTeamFilterCard .employeeFilter {
+        grid-template-columns:
+            minmax(0, 2fr) minmax(220px, 1fr) minmax(220px, 1fr);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+    .managerTeamFilterCard .employeeFilter {
+        grid-template-columns:
+            minmax(0, 1.5fr) minmax(180px, 1fr) minmax(180px, 1fr);
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+    .managerTeamFilterCard .employeeFilter {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(180px, 1fr);
+    }
+
+    .managerTeamFilterCard .employeeSearch {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .managerTeamFilterCard {
+        padding: 14px;
+    }
+
+    .managerTeamFilterCard .employeeFilterHeader {
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .managerTeamFilterCard .adminTasksFilterTitle {
+        font-size: 12px;
+    }
+
+    .managerTeamFilterCard .employeeClearBtn {
+        width: 100%;
+
+        min-width: 0;
+
+        height: 40px;
+    }
+
+    .managerTeamFilterCard .employeeFilter {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-top: 12px;
+    }
+
+    .managerTeamFilterCard .employeeSearch {
+        grid-column: auto;
+
+        height: 42px;
+    }
+
+    .managerTeamFilterCard .employeeFilter select {
+        height: 42px;
+    }
+
+    .managerTeamPagination {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 12px;
+    }
+
+    .managerTeamPagination .employeePaginationControls {
+        width: 100%;
+    }
+
+    .managerTeamPagination .paginationBtn {
+        flex: 1;
+    }
+
+    .managerTeamPagination .paginationCurrent {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+    .managerTeamFilterCard {
+        padding: 12px;
+    }
+
+    .managerTeamFilterCard .employeeSearch input {
+        font-size: 11px;
+    }
+
+    .managerTeamPagination .employeePaginationControls {
+        gap: 5px;
+    }
+
+    .managerTeamPagination .paginationBtn {
+        min-width: 0;
+
+        padding: 0 7px;
+
+        font-size: 10px;
+    }
+
+    .managerTeamPagination .paginationCurrent {
+        min-width: 0;
+
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .managerTeamRow,
+    .managerTeamActions .iconActionBtn,
+    .managerTeamPagination .paginationBtn {
+        transition: none;
+    }
+}

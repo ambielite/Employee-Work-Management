@@ -1,0 +1,1 @@
+export default function Stat({label,value,sub}:{label:string;value:string|number;sub?:string}){return <div className="card stat"><span>{label}</span><strong>{value}</strong>{sub&&<small>{sub}</small>}</div>}

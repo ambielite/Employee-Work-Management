@@ -1,0 +1,2 @@
+import {mins} from '../src/common/time';
+describe('time business rules',()=>{it('calculates minutes',()=>expect(mins(8*60*60*1000+30*60*1000)).toBe(510));it('never returns negative interval minutes',()=>expect(mins(-1000)).toBe(0));it('active time formula',()=>{const logged=540,br=60,idle=30;expect(Math.max(0,logged-br-idle)).toBe(450)});it('shortage',()=>expect(Math.max(0,480-450)).toBe(30));it('overtime',()=>expect(Math.max(0,510-480)).toBe(30));});

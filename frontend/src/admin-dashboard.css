@@ -1,0 +1,1141 @@
+/* =========================================================
+   EMPLOYEE WORK MANAGEMENT SYSTEM
+   ADMIN DASHBOARD
+   File: frontend/src/pages/admin-dashboard.css
+
+   Page-specific dashboard styles only.
+   Global/shared button styles remain in index.css/common.css.
+   ========================================================= */
+
+
+/* =========================================================
+   1. DASHBOARD CONTAINER
+   ========================================================= */
+
+.adminDashboard {
+  width: 100%;
+}
+
+/* Dashboard dialogs must cover the fixed navigation sidebar as well as content. */
+.adminDashboard .modalBackdrop {
+  z-index: 1200;
+}
+
+
+/* =========================================================
+   2. DASHBOARD HEADER
+   ========================================================= */
+
+.dashboardTitle {
+  margin-bottom: 18px;
+}
+
+.dashboardTitle h1 {
+  font-size: 26px;
+}
+
+.dashboardTitle p {
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   3. REFRESH BUTTON
+   ========================================================= */
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.spin {
+  animation: dashboardSpin 0.9s linear infinite;
+}
+
+@keyframes dashboardSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   4. DASHBOARD STAT CARDS
+   ========================================================= */
+
+.dashboardStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dashboardStat {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 122px;
+  padding: 16px;
+
+  background: var(--color-surface, #ffffff);
+
+  /* Normal border on the other three sides */
+  border: 1px solid var(--color-border-neutral, #d9dee7);
+
+  /* ONLY the top side is colored */
+  border-top: 3px solid #4f46e5 !important;
+
+  border-radius: var(--radius-2xl, 16px);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(15, 23, 42, 0.06));
+  overflow: hidden;
+
+  transition:
+    box-shadow var(--transition-normal, 0.2s ease),
+    transform var(--transition-normal, 0.2s ease);
+}
+
+/* Top border colors — explicitly applied to every card */
+.dashboardStat:nth-child(1) {
+  border-top-color: #4f46e5 !important;
+}
+
+.dashboardStat:nth-child(2) {
+  border-top-color: #15803d !important;
+}
+
+.dashboardStat:nth-child(3) {
+  border-top-color: #d97706 !important;
+}
+
+.dashboardStat:nth-child(4) {
+  border-top-color: #2563eb !important;
+}
+
+.dashboardStat:nth-child(5) {
+  border-top-color: #4f46e5 !important;
+}
+
+.dashboardStat:nth-child(6) {
+  border-top-color: #15803d !important;
+}
+
+.dashboardStat:nth-child(7) {
+  border-top-color: #d97706 !important;
+}
+
+.dashboardStat:nth-child(8) {
+  border-top-color: #2563eb !important;
+}
+
+/* Card hover remains, but NEVER changes the border */
+.dashboardStat:hover {
+  box-shadow: var(--shadow-md, 0 8px 20px rgba(15, 23, 42, 0.10));
+  transform: translateY(-1px);
+}
+
+.dashboardStat:focus-visible {
+  outline: 3px solid rgb(79 70 229 / 28%);
+  outline-offset: 2px;
+}
+
+/* Keep the exact same top-border color while hovering */
+.dashboardStat:nth-child(1):hover {
+  border-top-color: #4f46e5 !important;
+}
+
+.dashboardStat:nth-child(2):hover {
+  border-top-color: #15803d !important;
+}
+
+.dashboardStat:nth-child(3):hover {
+  border-top-color: #d97706 !important;
+}
+
+.dashboardStat:nth-child(4):hover {
+  border-top-color: #2563eb !important;
+}
+
+.dashboardStat:nth-child(5):hover {
+  border-top-color: #4f46e5 !important;
+}
+
+.dashboardStat:nth-child(6):hover {
+  border-top-color: #15803d !important;
+}
+
+.dashboardStat:nth-child(7):hover {
+  border-top-color: #d97706 !important;
+}
+
+.dashboardStat:nth-child(8):hover {
+  border-top-color: #2563eb !important;
+}
+
+.dashboardStat .statIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 9px;
+  background: #f1f5f9;
+  color: #64748b;
+
+  display: grid;
+  place-items: center;
+}
+
+.dashboardStat span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  padding-right: 42px;
+}
+
+.dashboardStat strong {
+  display: block;
+  font-size: 27px;
+  line-height: 1.1;
+  margin: 9px 0 7px;
+  color: #0f172a;
+}
+
+.dashboardStat small {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   5. DASHBOARD CHARTS
+   ========================================================= */
+
+.dashboardCharts {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.dashboardPanel {
+  min-width: 0;
+}
+
+.panelHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.panelHeading h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.panelHeading p {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+
+.panelHeading>svg {
+  color: #64748b;
+  flex: none;
+  margin-top: 1px;
+}
+
+.chartArea,
+.donutArea {
+  width: 100%;
+  height: 265px;
+}
+
+.dashboardEmpty {
+  height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  gap: 7px;
+  color: #64748b;
+}
+
+.dashboardEmpty svg {
+  margin-bottom: 4px;
+}
+
+.dashboardEmpty b {
+  color: #334155;
+  font-size: 14px;
+}
+
+.dashboardEmpty span {
+  font-size: 12px;
+  max-width: 310px;
+}
+
+
+/* =========================================================
+   6. QUICK OVERVIEW
+   ========================================================= */
+
+.quickPanel {
+  min-height: 300px;
+}
+
+.overviewList {
+  margin-top: 13px;
+}
+
+.overviewList>div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 13px 2px;
+
+  border-bottom: 1px solid #edf0f4;
+  font-size: 13px;
+}
+
+.overviewList>div:last-child {
+  border-bottom: 0;
+}
+
+.overviewList span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #475569;
+}
+
+.overviewList span svg {
+  color: #64748b;
+}
+
+.overviewList b {
+  font-size: 14px;
+  color: #0f172a;
+}
+
+
+/* =========================================================
+   7. RECENT ACTIVITY
+   ========================================================= */
+
+.recentPanel {
+  margin-top: 14px;
+}
+
+.recentTableWrap {
+  overflow: auto;
+}
+
+.recentTable th {
+  font-size: 10px;
+}
+
+.recentTable td {
+  font-size: 12px;
+}
+
+.dashboardFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 10px 2px;
+
+  font-size: 11px;
+}
+
+
+/* Dashboard button hover — keep the existing black hover */
+.adminDashboard .btn:not(:disabled):hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   8. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .dashboardStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboardCharts {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   9. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .dashboardStats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboardTitle {
+    align-items: flex-start;
+  }
+
+  .dashboardTitle .refreshBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboardFooter {
+    flex-direction: column;
+  }
+
+  .dashboardStat {
+    min-height: 118px;
+  }
+}
+
+
+/* =========================================================
+   10. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboardStat {
+    transition: none;
+  }
+
+  .spin {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   11. ADMIN DASHBOARD - EMPLOYEE DETAILS MODAL
+   Same details-modal design used on Admin Employees page.
+   Only applies to this dashboard modal.
+   ========================================================= */
+
+.adminDashboard .adminEmployeeDetailsModal {
+  width: min(720px, calc(100vw - 40px)) !important;
+  max-width: 720px !important;
+  max-height: calc(100vh - 40px);
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 !important;
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  box-shadow:
+    0 25px 70px rgba(15, 23, 42, 0.22),
+    0 8px 20px rgba(15, 23, 42, 0.08);
+
+  animation: adminEmployeeDetailsModalIn 0.18s ease-out;
+}
+
+.adminDashboard .adminDashboardListModal {
+  display: flex;
+  flex-direction: column;
+  width: min(1080px, calc(100vw - 40px));
+  max-width: 1080px;
+  max-height: calc(100vh - 40px);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Compact manager-style popup for all Admin dashboard card details. */
+.adminDashboard .adminDashboardCompactCardModal {
+  width: min(840px, calc(100vw - 32px));
+  max-width: 840px;
+  max-height: min(620px, calc(100vh - 32px));
+  border-radius: 14px;
+}
+
+.adminDashboardCardModalBackdrop {
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListModalHeader {
+  justify-content: flex-start;
+  min-height: 72px;
+  padding: 12px 18px;
+}
+
+.adminDashboardEmployeesIcon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListModalHeader h2 {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListModalHeader p {
+  margin-top: 3px;
+  font-size: 10px;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminEmployeeDetailsClose {
+  margin-left: auto;
+  border: 1px solid #dbe3ee;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListModalBody {
+  min-height: 0;
+  overflow: auto;
+  padding: 18px 21px 4px;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListTableWrap {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminDashboardCompactCardTable {
+  width: 100%;
+  min-width: 760px;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminDashboardCompactCardTable th {
+  position: sticky;
+  top: 0;
+  padding: 11px 13px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminDashboardCompactCardTable td {
+  padding: 11px 13px;
+  border-top: 1px solid #edf0f4;
+  color: #334155;
+  font-size: 12px;
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminDashboardCompactCardTable tr:hover td {
+  background: #fafcff;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .adminDashboardEmployeesTable {
+  min-width: 0;
+}
+
+.adminDashboard .adminDashboardCompactCardModal .dashboardListModalFooter {
+  min-height: 70px;
+  padding: 12px 21px;
+}
+
+.adminDashboardEmployeesCloseButton {
+  min-width: 90px;
+  border: 1px solid #cbd5e1 !important;
+  background: #fff !important;
+  color: #334155 !important;
+}
+
+.adminDashboardEmployeesCloseButton:hover {
+  background: #f8fafc !important;
+}
+
+.dashboardListModalHeader,
+.dashboardListModalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex: 0 0 auto;
+  padding: 16px 20px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.dashboardListModalHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+}
+
+.dashboardListModalHeader p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.adminDashboard .dashboardListModalBody {
+  min-height: 120px;
+  overflow: auto;
+  padding: 0;
+}
+
+.dashboardListTableWrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.dashboardListTable {
+  min-width: 760px;
+  margin: 0;
+}
+
+.dashboardListTable th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f8fafc;
+  white-space: nowrap;
+}
+
+.dashboardListTable td {
+  white-space: nowrap;
+}
+
+.dashboardListEmpty {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  padding: 24px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+.dashboardListModalFooter {
+  justify-content: flex-end;
+  border-top: 1px solid #edf0f4;
+  border-bottom: 0;
+  background: #fff;
+}
+
+@keyframes adminEmployeeDetailsModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Header */
+
+.adminDashboard .adminEmployeeDetailsHeader {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+  padding: 15px 21px;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.adminDashboard .adminEmployeeDetailsTitle {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adminDashboard .adminEmployeeDetailsIcon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.adminDashboard .adminEmployeeDetailsTitle h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.adminDashboard .adminEmployeeDetailsTitle p {
+  margin: 3px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.adminDashboard .adminEmployeeDetailsClose {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #6b7280;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.adminDashboard .adminEmployeeDetailsClose:hover {
+  background: #f3f4f6;
+  color: #111827;
+  transform: rotate(2deg);
+}
+
+
+/* Scrollable body */
+
+.adminDashboard .adminEmployeeDetailsBody {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 18px 21px 2px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.adminDashboard .adminEmployeeDetailsBody::-webkit-scrollbar {
+  width: 7px;
+}
+
+.adminDashboard .adminEmployeeDetailsBody::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.adminDashboard .adminEmployeeDetailsBody::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.adminDashboard .adminEmployeeDetailsBody::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* Profile */
+
+.adminDashboard .adminEmployeeDetailsProfile {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 14px;
+  margin-bottom: 18px;
+
+  background: #f8fafc;
+  border: 1px solid #edf0f4;
+  border-radius: 11px;
+}
+
+.adminDashboard .adminEmployeeDetailsAvatar {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #eef2ff;
+  color: #4f46e5;
+
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.adminDashboard .adminEmployeeDetailsProfileInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.adminDashboard .adminEmployeeDetailsProfileInfo h3 {
+  margin: 0 0 3px;
+
+  color: #111827;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.adminDashboard .adminEmployeeDetailsProfileInfo span {
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+.adminDashboard .adminEmployeeDetailsBadges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.adminDashboard .adminEmployeeDetailsRole,
+.adminDashboard .adminEmployeeDetailsStatus {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.adminDashboard .adminEmployeeDetailsRole {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.adminDashboard .adminEmployeeDetailsStatus {
+  border-radius: 999px;
+}
+
+.adminDashboard .adminEmployeeDetailsStatus.active {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.adminDashboard .adminEmployeeDetailsStatus.inactive {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+
+/* Sections */
+
+.adminDashboard .adminEmployeeDetailsSection {
+  margin-bottom: 18px;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child {
+  margin-bottom: 2px;
+}
+
+.adminDashboard .adminEmployeeDetailsSectionTitle {
+  margin-bottom: 9px;
+
+  color: #374151;
+
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.adminDashboard .adminEmployeeDetailsGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+.adminDashboard .adminEmployeeDetailsItem {
+  min-width: 0;
+
+  padding: 11px 12px;
+
+  background: #ffffff;
+  border: 1px solid #edf0f4;
+  border-radius: 9px;
+
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.adminDashboard .adminEmployeeDetailsItem:hover {
+  background: #f8fafc;
+  border-color: #dfe3ea;
+  transform: translateY(-1px);
+}
+
+.adminDashboard .adminEmployeeDetailsItem span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #6b7280;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.adminDashboard .adminEmployeeDetailsItem strong {
+  display: block;
+
+  overflow: hidden;
+
+  color: #111827;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Attendance section accent */
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(1) {
+  border-left: 3px solid #4f46e5;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(2) {
+  border-left: 3px solid #64748b;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(3) {
+  border-left: 3px solid #d97706;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(4) {
+  border-left: 3px solid #2563eb;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(5) {
+  border-left: 3px solid #64748b;
+}
+
+.adminDashboard .adminEmployeeDetailsSection:last-child .adminEmployeeDetailsItem:nth-child(6) {
+  border-left: 3px solid #16a34a;
+}
+
+
+/* Footer */
+
+.adminDashboard .adminEmployeeDetailsFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding: 14px 21px;
+
+  border-top: 1px solid #edf0f4;
+
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 -4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.adminDashboard .adminEmployeeDetailsFooter .btn {
+  min-width: 90px;
+  min-height: 40px;
+
+  padding: 8px 15px;
+
+  font-size: 12px;
+}
+
+
+/* Clickable attendance rows */
+
+.adminDashboard .recentTable tbody tr {
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.adminDashboard .recentTable tbody tr:hover {
+  background: #f8fafc;
+}
+
+.adminDashboard .recentTable tbody tr:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: -2px;
+}
+
+
+/* Tablet */
+
+@media (max-width: 700px) {
+  .adminDashboard .adminDashboardListModal {
+    width: calc(100vw - 28px);
+    max-height: calc(100vh - 28px);
+  }
+
+  .dashboardListModalHeader,
+  .dashboardListModalFooter {
+    padding: 13px 15px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsModal {
+    width: calc(100vw - 28px) !important;
+    max-width: none !important;
+  }
+
+  .adminDashboard .adminEmployeeDetailsBody {
+    padding: 15px 15px 2px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsProfile {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .adminDashboard .adminEmployeeDetailsBadges {
+    width: 100%;
+    justify-content: flex-start;
+
+    padding-left: 63px;
+    margin-top: -4px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsFooter {
+    padding: 12px 15px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .adminDashboard .adminEmployeeDetailsModal {
+    width: calc(100vw - 14px) !important;
+    max-height: calc(100vh - 14px);
+
+    border-radius: 11px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsHeader {
+    min-height: 64px;
+    padding: 12px 15px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsTitle {
+    gap: 9px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsIcon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsTitle h2 {
+    font-size: 17px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsTitle p {
+    font-size: 11px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsBody {
+    padding: 13px 12px 2px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsProfile {
+    padding: 12px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsAvatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsProfileInfo h3 {
+    font-size: 15px;
+  }
+
+  .adminDashboard .adminEmployeeDetailsFooter {
+    padding: 10px 12px;
+  }
+}
+
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .adminDashboard .adminEmployeeDetailsModal,
+  .adminDashboard .adminEmployeeDetailsClose,
+  .adminDashboard .adminEmployeeDetailsItem {
+    animation: none;
+    transition: none;
+  }
+}

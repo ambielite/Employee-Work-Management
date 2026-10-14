@@ -1,0 +1,30 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+.vite/
+.DS_Store
+
+# Secrets and local configuration
+*.pem
+*.key
+
+# Database backups
+*.sql
+*.dump
+*.backup
+
+# Local IDE files
+.vscode/
+.idea/
+structure.txt
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Temporary backup files
+* copy.ts
+* copy.tsx

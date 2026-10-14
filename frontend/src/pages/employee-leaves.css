@@ -1,0 +1,1028 @@
+/* =========================================================
+   EMPLOYEE LEAVES PAGE
+   Employee version follows the Admin Leave page visual system:
+   same spacing, borders, colors, table, badges and controls.
+   ========================================================= */
+
+.employeeLeavesPage {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  animation: employeeLeavesFadeIn 0.25s ease;
+}
+
+@keyframes employeeLeavesFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.employeeLeavesHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.employeeLeavesHeader h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.employeeLeavesHeader p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.employeeLeavesRefreshBtn {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.employeeLeavesRefreshBtn:hover:not(:disabled) {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.employeeLeavesRefreshBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.employeeLeavesSpin {
+  animation: employeeLeavesRotate 0.9s linear infinite;
+}
+
+@keyframes employeeLeavesRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.employeeLeavesSummary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.employeeLeavesSummaryCard {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 17px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  border-left: 3px solid #2563eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.employeeLeavesSummaryCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.07);
+}
+
+.employeeLeavesSummaryCard.total {
+  border-left-color: #2563eb;
+}
+
+.employeeLeavesSummaryCard.pending {
+  border-left-color: #f59e0b;
+}
+
+.employeeLeavesSummaryCard.approved {
+  border-left-color: #16a34a;
+}
+
+.employeeLeavesSummaryCard.rejected {
+  border-left-color: #dc2626;
+}
+
+.employeeLeavesSummaryIcon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.employeeLeavesSummaryCard.total .employeeLeavesSummaryIcon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.employeeLeavesSummaryCard.pending .employeeLeavesSummaryIcon {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.employeeLeavesSummaryCard.approved .employeeLeavesSummaryIcon {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.employeeLeavesSummaryCard.rejected .employeeLeavesSummaryIcon {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.employeeLeavesSummaryCard span {
+  display: block;
+  margin-bottom: 2px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.employeeLeavesSummaryCard strong {
+  display: block;
+  color: #111827;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.employeeLeavesMainGrid {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.82fr) minmax(0, 1.55fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* =========================================================
+   APPLY CARD
+   ========================================================= */
+
+.employeeLeavesFormCard,
+.employeeLeavesRequestsCard {
+  height: 100%;
+  min-height: 520px;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid #e1e5ea;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.employeeLeavesFormCard,
+.employeeLeavesRequestsCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.employeeLeavesCardHeader,
+.employeeLeavesTableHeader {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.employeeLeavesCardHeader h2,
+.employeeLeavesTableHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.employeeLeavesCardHeader p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.employeeLeavesCardIcon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.employeeLeavesFormBody {
+  padding: 16px;
+}
+
+.employeeLeavesField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 14px;
+}
+
+.employeeLeavesField>span {
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.employeeLeavesField>span b,
+.employeeLeavesFormFooter b {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.employeeLeavesField select,
+.employeeLeavesField input[type="date"],
+.employeeLeavesField textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cfd5dc;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.employeeLeavesField select {
+  height: 40px;
+  padding: 0 32px 0 12px;
+  cursor: pointer;
+}
+
+.employeeLeavesField input[type="date"] {
+  height: 40px;
+  padding: 0 12px;
+  min-width: 0;
+}
+
+.employeeLeavesField input[type="date"]::-webkit-calendar-picker-indicator {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.employeeLeavesField input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.employeeLeavesField textarea {
+  min-height: 108px;
+  padding: 10px 12px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.employeeLeavesField select:hover,
+.employeeLeavesField input[type="date"]:hover,
+.employeeLeavesField textarea:hover {
+  border-color: #b8c0ca;
+}
+
+.employeeLeavesField select:focus,
+.employeeLeavesField input[type="date"]:focus,
+.employeeLeavesField textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.employeeLeavesField select:disabled,
+.employeeLeavesField input:disabled,
+.employeeLeavesField textarea:disabled {
+  background: #f8fafc;
+  cursor: not-allowed;
+}
+
+.employeeLeavesField textarea::placeholder {
+  color: #94a3b8;
+}
+
+.employeeLeavesField>small {
+  align-self: flex-end;
+  margin-top: -2px;
+  color: #9ca3af;
+  font-size: 10px;
+}
+
+.employeeLeavesDateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.employeeLeavesDateInput {
+  position: relative;
+}
+
+/* .employeeLeavesDateInput input {
+  padding-right: 35px !important;
+} */
+
+.employeeLeavesInlineError {
+  margin: -5px 0 13px;
+  color: #b91c1c;
+  font-size: 11px;
+}
+
+.employeeLeavesAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 14px 16px 0;
+  padding: 10px 12px;
+  border: 1px solid;
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.employeeLeavesAlert.error {
+  border-color: #fed7aa;
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.employeeLeavesAlert.success {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.employeeLeavesHalfDay {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.employeeLeavesHalfDay input {
+  width: 15px;
+  height: 15px;
+  margin: 1px 0 0;
+  accent-color: #2563eb;
+}
+
+.employeeLeavesHalfDay span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.employeeLeavesHalfDay strong {
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.employeeLeavesHalfDay small {
+  color: #9ca3af;
+  font-size: 10.5px;
+}
+
+.employeeLeavesFormFooter {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.employeeLeavesFormFooter>span {
+  color: #6b7280;
+  font-size: 10.5px;
+}
+
+.employeeLeavesSubmitBtn {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.employeeLeavesSubmitBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   REQUEST TABLE
+   ========================================================= */
+
+.employeeLeavesTableHeader {
+  min-height: 64px;
+}
+
+.employeeLeavesTableHeader>div {
+  min-width: 0;
+}
+
+.employeeLeavesTableHeader span {
+  display: block;
+  margin-top: 3px;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.employeeLeavesTableWrap {
+  width: 100%;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.employeeLeavesTable {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.employeeLeavesTable thead th {
+  height: 45px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #dfe3e8;
+  background: #f8fafc;
+  color: #4b5563;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.employeeLeavesTable tbody td {
+  height: 58px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #eef0f2;
+  background: #ffffff;
+  color: #374151;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.employeeLeavesTable tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.employeeLeavesTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.employeeLeavesTable tbody tr:hover td {
+  background: #fafafa;
+}
+
+.employeeLeavesType {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.employeeLeavesType svg {
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.employeeLeavesDuration {
+  color: #374151;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.employeeLeavesStatus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.employeeLeavesStatus.pending {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.employeeLeavesStatus.approved {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.employeeLeavesStatus.rejected {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.employeeLeavesStatus.cancelled {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.employeeLeavesReason,
+.employeeLeavesReview {
+  display: block;
+  max-width: 150px;
+  overflow: hidden;
+  color: #4b5563;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11.5px;
+}
+
+/* =========================================================
+   STATES
+   ========================================================= */
+
+.employeeLeavesState {
+  flex: 1 1 auto;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 25px;
+  color: #6b7280;
+  text-align: center;
+  font-size: 12px;
+}
+
+.employeeLeavesState strong {
+  color: #374151;
+  font-size: 13px;
+}
+
+.employeeLeavesState.error {
+  color: #b91c1c;
+}
+
+.employeeLeavesState.error strong {
+  color: #b91c1c;
+}
+
+.employeeLeavesState button {
+  margin-top: 3px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .employeeLeavesSummary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .employeeLeavesMainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .employeeLeavesFormCard,
+  .employeeLeavesRequestsCard {
+    min-height: 0;
+  }
+
+  .employeeLeavesTable {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .employeeLeavesHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .employeeLeavesRefreshBtn {
+    width: fit-content;
+  }
+
+  .employeeLeavesDateGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .employeeLeavesTable {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 520px) {
+  .employeeLeavesSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .employeeLeavesSummaryCard {
+    min-height: 76px;
+  }
+
+  .employeeLeavesCardHeader,
+  .employeeLeavesTableHeader {
+    padding: 12px 13px;
+  }
+
+  .employeeLeavesFormBody {
+    padding: 13px;
+  }
+
+  .employeeLeavesFormFooter {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 12px 13px;
+  }
+
+  .employeeLeavesSubmitBtn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   LEAVE REQUEST DETAILS MODAL
+   ========================================================= */
+
+.employeeLeavesRequestRow {
+  cursor: pointer;
+  outline: none;
+}
+
+.employeeLeavesRequestRow:focus-visible td {
+  box-shadow: inset 0 0 0 2px rgba(37, 99, 235, 0.14);
+}
+
+.employeeLeavesModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.52);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: employeeLeavesModalFadeIn 0.18s ease;
+}
+
+@keyframes employeeLeavesModalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.employeeLeavesDetailsModal {
+  width: min(720px, 100%);
+  max-height: min(780px, calc(100vh - 48px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dfe5ec;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+  animation: employeeLeavesModalSlideIn 0.2s ease;
+}
+
+@keyframes employeeLeavesModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.employeeLeavesDetailsHeader {
+  min-height: 78px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.employeeLeavesDetailsEyebrow {
+  display: block;
+  margin-bottom: 3px;
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.employeeLeavesDetailsHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.employeeLeavesDetailsHeader p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.employeeLeavesDetailsHeader p strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+.employeeLeavesDetailsClose {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #d4dbe3;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #64748b;
+  transition: 0.16s ease;
+}
+
+.employeeLeavesDetailsClose:hover {
+  color: #111827;
+  background: #f8fafc;
+  border-color: #bfc8d3;
+  transform: translateY(-1px);
+}
+
+.employeeLeavesDetailsBody {
+  overflow-y: auto;
+  padding: 16px 18px;
+}
+
+.employeeLeavesDetailsStatusBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 11px;
+  background: #f8fafc;
+  border: 1px solid #e5eaf0;
+  border-radius: 9px;
+}
+
+.employeeLeavesDetailsStatusBar>div {
+  min-width: 0;
+}
+
+.employeeLeavesDetailsStatusBar span,
+.employeeLeavesDetailsItem>span,
+.employeeLeavesReviewerCard span,
+.employeeLeavesReviewComment>span {
+  display: block;
+  margin-bottom: 5px;
+  color: #6b7280;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.employeeLeavesDetailsStatusBar>div:last-child {
+  text-align: right;
+}
+
+.employeeLeavesDetailsStatusBar strong {
+  color: #111827;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.employeeLeavesDetailsStatusBar .employeeLeavesStatus {
+  display: inline-flex;
+  margin: 0;
+}
+
+.employeeLeavesDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.employeeLeavesDetailsItem {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #e3e8ee;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.employeeLeavesDetailsItem.full {
+  grid-column: 1 / -1;
+}
+
+.employeeLeavesDetailsItem strong {
+  display: block;
+  color: #111827;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+.employeeLeavesDetailsText {
+  color: #374151;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.employeeLeavesDetailsReview {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #e3e8ee;
+  border-radius: 9px;
+  background: #fbfcfe;
+}
+
+.employeeLeavesDetailsSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
+  color: #111827;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.employeeLeavesDetailsSectionTitle svg {
+  color: #2563eb;
+}
+
+.employeeLeavesReviewerCard {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1.3fr 0.9fr;
+  gap: 10px;
+}
+
+.employeeLeavesReviewerCard>div {
+  min-width: 0;
+}
+
+.employeeLeavesReviewerCard strong {
+  display: block;
+  overflow: hidden;
+  color: #111827;
+  font-size: 11.5px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.employeeLeavesReviewerPending {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 10px;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 7px;
+  font-size: 11px;
+}
+
+.employeeLeavesReviewerPending svg {
+  flex: 0 0 auto;
+}
+
+.employeeLeavesReviewerPending strong {
+  color: #92400e;
+  font-weight: 700;
+}
+
+.employeeLeavesReviewComment {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.employeeLeavesReviewComment p {
+  margin: 0;
+  color: #374151;
+  font-size: 11.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.employeeLeavesDetailsFooter {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 9px 18px;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.employeeLeavesDetailsCloseBtn {
+  min-height: 34px;
+  padding: 0 13px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .employeeLeavesModalOverlay {
+    padding: 12px;
+  }
+
+  .employeeLeavesDetailsModal {
+    max-height: calc(100vh - 24px);
+  }
+
+  .employeeLeavesDetailsGrid,
+  .employeeLeavesDetailsStatusBar,
+  .employeeLeavesReviewerCard {
+    grid-template-columns: 1fr;
+  }
+
+  .employeeLeavesDetailsStatusBar>div:last-child {
+    text-align: left;
+  }
+}

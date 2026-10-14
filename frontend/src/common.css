@@ -1,0 +1,1084 @@
+/* =========================================================
+   EMPLOYEE WORK MANAGEMENT SYSTEM
+   COMMON COMPONENT STYLES
+   File: frontend/src/common.css
+
+   Purpose:
+   Shared UI styles used across multiple pages/components.
+   Page-specific styles should remain in their own CSS files.
+   ========================================================= */
+
+
+/* =========================================================
+   1. PAGE HEADER / TITLE
+   ========================================================= */
+
+.pageHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.pageHeaderContent {
+    min-width: 0;
+}
+
+.pageTitle {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 25px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.25;
+    letter-spacing: -0.25px;
+}
+
+.pageSubtitle {
+    margin: 5px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pageActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   2. COMMON SECTION
+   ========================================================= */
+
+.commonSection {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.commonSection:last-child {
+    margin-bottom: 0;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    margin-bottom: 14px;
+}
+
+.sectionTitle {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 17px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.3;
+}
+
+.sectionSubtitle {
+    margin: 4px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   3. COMMON PANEL
+   ========================================================= */
+
+.commonPanel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-neutral);
+    border-radius: var(--radius-2xl);
+
+    box-shadow: var(--shadow-sm);
+
+    overflow: hidden;
+}
+
+.commonPanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    padding: 16px 18px;
+
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.commonPanelBody {
+    padding: 18px;
+}
+
+.commonPanelFooter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding: 14px 18px;
+
+    border-top: 1px solid var(--color-border-light);
+    background: var(--color-bg-subtle);
+}
+
+
+/* =========================================================
+   4. COMMON CARD VARIANTS
+   ========================================================= */
+
+.commonCard {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-neutral);
+    border-radius: var(--radius-2xl);
+
+    padding: 18px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+.commonCard.compact {
+    padding: 14px;
+}
+
+.commonCard.noPadding {
+    padding: 0;
+}
+
+.commonCard.soft {
+    background: var(--color-bg-subtle);
+}
+
+.commonCard.primary {
+    border-color: var(--color-primary-soft-hover);
+    background: var(--color-primary-soft);
+}
+
+
+/* =========================================================
+   5. COMMON ACTION BAR
+   ========================================================= */
+
+.actionBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    margin-bottom: 16px;
+}
+
+.actionBarLeft,
+.actionBarRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.actionBarRight {
+    justify-content: flex-end;
+}
+
+
+/* =========================================================
+   6. COMMON ICON BUTTON
+   ========================================================= */
+
+.commonIconBtn {
+    width: 36px;
+    height: 36px;
+
+    display: inline-grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: #ffffff;
+    color: var(--color-text-secondary);
+
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.commonIconBtn:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+
+.commonIconBtn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.commonIconBtn:disabled {
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   7. BUTTON VARIANTS
+   ========================================================= */
+
+.btn.outline {
+    background: #ffffff;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn.outline:hover:not(:disabled) {
+    background: var(--color-primary-soft);
+    border-color: var(--color-primary-hover);
+    color: var(--color-primary-hover);
+}
+
+.btn.ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--color-text-secondary);
+}
+
+.btn.ghost:hover:not(:disabled) {
+    background: var(--color-bg-muted);
+    border-color: transparent;
+    color: var(--color-text);
+}
+
+.btn.info {
+    background: var(--color-info);
+    color: #ffffff;
+}
+
+.btn.info:hover:not(:disabled) {
+    background: var(--color-info-hover);
+}
+
+.btn.warning {
+    background: var(--color-warning);
+    color: #ffffff;
+}
+
+.btn.warning:hover:not(:disabled) {
+    background: var(--color-warning-hover);
+}
+
+
+/* =========================================================
+   8. BUTTON SIZE VARIANTS
+   ========================================================= */
+
+.btn.small {
+    min-height: 34px;
+    padding: 7px 11px;
+
+    font-size: 12px;
+}
+
+.btn.medium {
+    min-height: 40px;
+}
+
+.btn.large {
+    min-height: 44px;
+    padding: 10px 18px;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   9. FORM LAYOUT
+   ========================================================= */
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.formGrid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.formGrid.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.formFieldFull {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   10. FORM GROUP
+   ========================================================= */
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    min-width: 0;
+}
+
+.formLabel {
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.3;
+}
+
+.formRequired {
+    color: var(--color-danger);
+    margin-left: 2px;
+}
+
+.formHint {
+    color: var(--color-text-subtle);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.formError {
+    color: var(--color-danger);
+
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   11. SHARED FORM INPUT
+   ========================================================= */
+
+.formControl {
+    width: 100%;
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    background: #ffffff;
+    color: var(--color-text);
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+}
+
+.formControl:hover {
+    border-color: var(--color-border-dark);
+}
+
+.formControl:focus {
+    outline: none;
+
+    border-color: var(--color-primary);
+
+    box-shadow: var(--focus-ring);
+}
+
+.formControl:disabled {
+    background: var(--color-bg-muted);
+    color: var(--color-text-subtle);
+
+    cursor: not-allowed;
+}
+
+.formControl.error {
+    border-color: var(--color-danger);
+}
+
+.formControl.error:focus {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+
+/* =========================================================
+   12. FORM TEXTAREA
+   ========================================================= */
+
+.formTextarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   13. FORM CHECKBOX / RADIO
+   ========================================================= */
+
+.formCheck {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+    font-weight: var(--font-weight-medium);
+
+    cursor: pointer;
+}
+
+.formCheck input {
+    width: 16px;
+    height: 16px;
+
+    margin: 0;
+
+    accent-color: var(--color-primary);
+}
+
+
+/* =========================================================
+   14. FORM FOOTER
+   ========================================================= */
+
+.formFooter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding-top: 16px;
+
+    border-top: 1px solid var(--color-border-light);
+}
+
+
+/* =========================================================
+   15. COMMON SEARCH INPUT
+   ========================================================= */
+
+.commonSearch {
+    min-width: 240px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 0 11px;
+
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    color: var(--color-text-muted);
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.commonSearch:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+.commonSearch input {
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: var(--color-text);
+
+    font-size: 14px;
+}
+
+.commonSearch input::placeholder {
+    color: var(--color-text-subtle);
+}
+
+
+/* =========================================================
+   16. COMMON SELECT
+   ========================================================= */
+
+.commonSelect {
+    min-width: 150px;
+    height: 40px;
+
+    padding: 0 34px 0 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    background: #ffffff;
+    color: var(--color-text);
+
+    font-size: 14px;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.commonSelect:hover {
+    border-color: var(--color-border-dark);
+}
+
+.commonSelect:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--focus-ring);
+}
+
+
+/* =========================================================
+   17. COMMON MESSAGE / ALERT
+   ========================================================= */
+
+.commonMessage {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--color-border-neutral);
+    border-radius: var(--radius-lg);
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.commonMessageIcon {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.commonMessage.info {
+    background: var(--color-info-soft);
+    border-color: var(--color-info-border);
+    color: var(--color-info-hover);
+}
+
+.commonMessage.success {
+    background: var(--color-success-soft);
+    border-color: var(--color-success-border);
+    color: var(--color-success);
+}
+
+.commonMessage.warning {
+    background: var(--color-warning-soft);
+    border-color: var(--color-warning-border);
+    color: var(--color-warning-hover);
+}
+
+.commonMessage.error {
+    background: var(--color-danger-soft);
+    border-color: var(--color-danger-border);
+    color: var(--color-danger-hover);
+}
+
+
+/* =========================================================
+   18. LOADING STATE
+   ========================================================= */
+
+.loadingState {
+    min-height: 140px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 24px;
+
+    color: var(--color-text-muted);
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.loadingSpinner {
+    width: 18px;
+    height: 18px;
+
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+
+    animation: commonSpin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   19. EMPTY STATE
+   ========================================================= */
+
+.emptyState {
+    min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    color: var(--color-text-muted);
+
+    text-align: center;
+}
+
+.emptyStateIcon {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 50%;
+
+    background: var(--color-bg-muted);
+    color: var(--color-text-muted);
+}
+
+.emptyStateTitle {
+    margin: 0 0 4px;
+
+    color: var(--color-text);
+
+    font-size: 15px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.emptyStateText {
+    max-width: 440px;
+
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   20. COMMON DIVIDER
+   ========================================================= */
+
+.divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 16px 0;
+
+    background: var(--color-border-light);
+}
+
+
+/* =========================================================
+   21. COMMON MODAL CONTENT
+   ========================================================= */
+
+.modalDescription {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.modalHeader {
+    padding-right: 36px;
+}
+
+.modalHeaderTitle {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+}
+
+.modalHeaderSubtitle {
+    margin: 5px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 13px;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   22. CONFIRM DIALOG
+   ========================================================= */
+
+.confirmDialog {
+    width: min(440px, 100%);
+}
+
+.confirmDialogMessage {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.confirmDialogActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   23. STATUS DOT
+   ========================================================= */
+
+.statusDot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: var(--color-text-subtle);
+}
+
+.statusDot.success {
+    background: var(--color-success);
+}
+
+.statusDot.warning {
+    background: var(--color-warning);
+}
+
+.statusDot.danger {
+    background: var(--color-danger);
+}
+
+.statusDot.info {
+    background: var(--color-info);
+}
+
+
+/* =========================================================
+   24. INLINE STATUS
+   ========================================================= */
+
+.inlineStatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+    font-weight: var(--font-weight-medium);
+}
+
+
+/* =========================================================
+   25. TOOLTIP-LIKE HELP TEXT
+   ========================================================= */
+
+.helpText {
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   26. TEXT UTILITIES
+   ========================================================= */
+
+.textPrimary {
+    color: var(--color-primary);
+}
+
+.textSuccess {
+    color: var(--color-success);
+}
+
+.textWarning {
+    color: var(--color-warning);
+}
+
+.textDanger {
+    color: var(--color-danger);
+}
+
+.textMuted {
+    color: var(--color-text-muted);
+}
+
+.textSubtle {
+    color: var(--color-text-subtle);
+}
+
+.textStrong {
+    font-weight: var(--font-weight-semibold);
+}
+
+
+/* =========================================================
+   27. BACKGROUND UTILITIES
+   ========================================================= */
+
+.bgPrimary {
+    background: var(--color-primary-soft);
+}
+
+.bgSuccess {
+    background: var(--color-success-soft);
+}
+
+.bgWarning {
+    background: var(--color-warning-soft);
+}
+
+.bgDanger {
+    background: var(--color-danger-soft);
+}
+
+.bgInfo {
+    background: var(--color-info-soft);
+}
+
+
+/* =========================================================
+   28. RESPONSIVE COMMON STYLES
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .pageHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .pageActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .formGrid.three,
+    .formGrid.four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .actionBar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .actionBarLeft,
+    .actionBarRight {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .pageTitle {
+        font-size: 22px;
+    }
+
+    .pageSubtitle {
+        font-size: 13px;
+    }
+
+    .pageActions {
+        width: 100%;
+    }
+
+    .pageActions .btn {
+        flex: 1;
+    }
+
+    .formGrid,
+    .formGrid.three,
+    .formGrid.four {
+        grid-template-columns: 1fr;
+    }
+
+    .formFieldFull {
+        grid-column: auto;
+    }
+
+    .commonSearch {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .commonSelect {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .actionBarLeft,
+    .actionBarRight {
+        width: 100%;
+    }
+
+    .actionBarLeft>*,
+    .actionBarRight>* {
+        flex: 1;
+    }
+
+    .commonPanelHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .commonPanelFooter {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .commonPanelFooter .btn {
+        width: 100%;
+    }
+
+    .formFooter {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .formFooter .btn {
+        width: 100%;
+    }
+
+    .confirmDialogActions {
+        flex-direction: column-reverse;
+    }
+
+    .confirmDialogActions .btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .pageActions {
+        flex-direction: column;
+    }
+
+    .pageActions .btn {
+        width: 100%;
+        flex: none;
+    }
+
+    .commonCard,
+    .commonPanelBody {
+        padding: 14px;
+    }
+}
+
+
+/* =========================================================
+   29. ANIMATIONS
+   ========================================================= */
+
+@keyframes commonSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes commonFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes commonSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   30. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .loadingSpinner {
+        animation: none;
+    }
+
+    .commonCard,
+    .commonIconBtn,
+    .btn,
+    .formControl,
+    .commonSearch,
+    .commonSelect {
+        transition: none;
+    }
+}

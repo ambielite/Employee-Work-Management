@@ -1,0 +1,1 @@
+export const fmt=(m:number)=>{m=Math.max(0,Math.floor(m));return `${String(Math.floor(m/60)).padStart(2,'0')}h ${String(m%60).padStart(2,'0')}m`}; export const liveMins=(iso?:string)=>iso?Math.floor((Date.now()-new Date(iso).getTime())/60000):0;
