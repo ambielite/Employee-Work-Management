@@ -1,5 +1,5 @@
 import "reflect-metadata";
-
+import type { CorsOptions } from "cors";
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe } from "@nestjs/common";
 
@@ -39,7 +39,7 @@ async function bootstrap() {
   const productionFrontendUrl =
     config.get<string>("CORS_ORIGIN") || "http://localhost:5173";
 
-  app.enableCors({
+  const corsOptions: CorsOptions = {
     origin: (origin, callback) => {
       // Allow requests without an Origin header (e.g. server-to-server).
       if (!origin) {
@@ -74,7 +74,9 @@ async function bootstrap() {
 
       return callback(new Error("Origin not allowed by CORS"), false);
     },
-  });
+  };
+
+  app.enableCors(corsOptions);
 
   /**
    * Global request validation.
