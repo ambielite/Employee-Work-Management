@@ -1,4 +1,4 @@
-# Employee Work Management System — V1
+# Employee Work Management System
 
 Production-oriented internal Employee Work Management, Attendance, Time Tracking and Task Management application.
 
