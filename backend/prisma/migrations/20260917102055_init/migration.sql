@@ -1,0 +1,66 @@
+-- CreateEnum
+CREATE TYPE "LiveStatus" AS ENUM ('ACTIVE', 'IDLE', 'ON_BREAK', 'OFFLINE');
+
+-- DropIndex
+DROP INDEX "TaskComment_taskId_idx";
+
+-- AlterTable
+ALTER TABLE "Attendance" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "AuditLog" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "BreakSession" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "CompanySetting" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Department" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Employee" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Holiday" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "IdleSession" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "LeaveRequest" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "LeaveType" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Notification" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Project" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "Task" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "TaskComment" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "TaskTimerSession" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "id" DROP DEFAULT,
+ALTER COLUMN "updatedAt" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "WorkEvent" ALTER COLUMN "id" DROP DEFAULT;
+
+-- AlterTable
+ALTER TABLE "WorkSession" ALTER COLUMN "id" DROP DEFAULT;
